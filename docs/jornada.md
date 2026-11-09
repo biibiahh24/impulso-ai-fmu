@@ -1,6 +1,6 @@
 # Jornada do usuário — fluxograma do IMPULSO AI
 
-**Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kaua — nome completo e RA pendentes.
+**Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kauã da Silva Viturino — RA 2025102893.
 
 ```mermaid
 flowchart TD
