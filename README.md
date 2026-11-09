@@ -79,6 +79,18 @@ Para demonstrar o fluxo: **Diagnóstico** → configure empresa e processo → *
 - Teste em viewport móvel de 390 pixels sem rolagem horizontal; PDF gerado no navegador.
 - A configuração de autenticação da Vercel foi desativada para permitir acesso público ao site durante a avaliação FMU. Não inserir informações sigilosas, pois o protótipo é público.
 
+
+## Upgrade funcional de UX — 09/11/2026
+
+Além do visual, o MVP passou a orientar o usuário em **cinco etapas reais da demonstração**: diagnóstico, seleção de oportunidade, simulação econômica, aprovação humana e geração de relatório. O painel de progresso é atualizado pelas ações realizadas, não por cronômetro ou animação decorativa.
+
+- **Priorização contextual demonstrativa:** mudar o objetivo da empresa altera a ordem das três oportunidades e explica por que uma delas é mais compatível com o objetivo. Trata-se de regras explícitas e auditáveis, sem alegação de IA generativa em execução.
+- **Rastreabilidade das decisões:** o dashboard indica etapa atual e próxima ação; alterar variáveis do cenário invalida a aprovação simulada anterior.
+- **Linguagem de produto:** a tela usa “Oportunidades para avaliar” e “Analisar prontidão”, evitando dar a entender que uma IA real está sendo executada.
+- **Testes automatizados:** navegador Chromium em 1440 px e 390 px, com fluxo de diagnóstico → seleção → ROI → bloqueio por dados insuficientes → aprovação após correção → download de relatório, além de ordenação contextual por objetivo. Sem erros de JavaScript ou rolagem horizontal nos dois tamanhos.
+
+**Limitações mantidas:** não há banco de dados, login, sincronização entre dispositivos nem conexão com modelo de IA. As decisões são locais e ilustrativas. O indicador de conclusão representa apenas tarefas demonstradas nesta sessão.
+
 ## Integrantes do grupo
 - **Beatriz Ramos — RA 2025116740**
 - **Nicole Santos Damaceno — RA 2025102325**
