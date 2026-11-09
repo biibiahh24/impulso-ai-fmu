@@ -5,7 +5,8 @@ Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a parti
 
 ## Acesso
 - **Protótipo:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app
-- **Apresentação (8 slides):** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/apresentacao/business-case.html
+- **Apresentação editável no Canva (8 slides):** https://www.canva.com/d/aij3bnHcRKTj5HQ
+- **Apresentação HTML auxiliar:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/apresentacao/business-case.html
 - **Repositório:** https://github.com/biibiahh24/impulso-ai-fmu
 
 ## Problema
@@ -33,6 +34,9 @@ Os pontos relacionados a Cilia e Leavo AI não devem ser apresentados como cita�
 
 ## Conteúdo
 - `index.html` — demonstração interativa.
+- `entregaveis/01-relatorio-mvp.html` — relatório completo formatado para salvar como PDF.
+- `entregaveis/02-fluxograma.svg` — fluxograma visual da jornada, com decisões humanas e KPIs.
+- **Canva** — apresentação de oito slides editável pelo link acima (exportar PDF final para a pasta do repositório antes da entrega).
 - `docs/matriz-comparativa.md` — síntese de pesquisa.
 - `docs/mvp-e-viabilidade.md` — problema, produto, modelo de negócio e cenário financeiro.
 - `docs/jornada.md` — fluxograma Mermaid com decisões humanas.
