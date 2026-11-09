@@ -18,7 +18,7 @@
 
 ## Matriz comparativa — requisito 3.3
 
-Arquivo: [docs/matriz-comparativa.md](docs/matriz-comparativa.md) e seção 4 do relatório.
+Arquivo: [docs/matriz-comparativa.md](docs/matriz-comparativa.md), [pesquisa complementar com fontes públicas](docs/pesquisa-complementar-seis-empresas.md) e seções 3–5 e 12 do relatório. A pesquisa foi complementada com páginas institucionais consultadas em 09/11/2026; cada informação é identificada como entrevista (E), fonte pública (P) ou análise acadêmica (A).
 
 - [x] Seis empresas identificadas.
 - [x] Aplicações e mudanças do setor.
@@ -29,7 +29,8 @@ Arquivo: [docs/matriz-comparativa.md](docs/matriz-comparativa.md) e seção 4 do
 - [x] Barreiras de entrada.
 - [x] Discussão de ROI com ressalvas.
 - [x] Discussão de habilidades profissionais.
-- [ ] Conferência final dos depoimentos nos vídeos/anotações originais e inclusão das evidências permitidas. Não atribuir inferências acadêmicas como falas das empresas.
+- [x] Complementação documental das seis empresas com links institucionais, modelos de custos, ROI, maturação, habilidades e indicadores para futura validação.
+- [ ] Conferência final dos depoimentos nos vídeos/anotações originais e inclusão das evidências autorizadas. A pesquisa pública complementa, mas **não substitui a entrevista requerida**.
 
 ## MVP conceitual — nove critérios do item 3.4.1
 
@@ -74,7 +75,7 @@ Referência para a apresentação oral: [roteiro de fala](docs/roteiro-apresenta
 ## CONDIÇÕES PENDENTES — obrigatórias para entrega
 
 1. [x] **Identificar os quatro integrantes nos artefatos e na documentação**: README, relatório, fluxograma, versão HTML da apresentação e roteiros. A capa do Canva deve ser confirmada após atualização.
-2. [ ] **Conferir a documentação original das seis visitas/entrevistas**. Complementar evidências existentes e revisar os casos marcados como análise técnica, principalmente Cilia e Leavo AI. Não publicar dados pessoais de terceiros sem autorização.
+2. [ ] **Validar os registros originais das seis visitas/entrevistas**. A matriz e o relatório já contêm pesquisa secundária oficial com URL e ressalvas para dados que não são entrevistas. Inserir fotos/anotações autorizadas quando disponíveis e não atribuir pesquisa de site ao entrevistado. Não publicar dados pessoais de terceiros sem autorização.
 3. [ ] **Exportar o Canva** para PDF/PPTX e adicioná-lo ao repositório para preservar a versão final projetada. A versão HTML de oito slides já está no GitHub, portanto este item reforça consistência e disponibilidade.
 4. [ ] **Ensaiar e realizar apresentação oral obrigatória** (~5 minutos por grupo).
 5. [ ] **Enviar o link do repositório público no espaço próprio do LXP até 11/11/2026** — isso não acontece automaticamente com a publicação no GitHub.
