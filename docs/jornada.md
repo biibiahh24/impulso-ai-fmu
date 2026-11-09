@@ -2,8 +2,6 @@
 
 **Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kaua — nome completo e RA pendentes.
 
-**Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kaua — nome completo e RA pendentes.
-
 ```mermaid
 flowchart TD
  A[Gestor cadastra o processo] --> B[Diagnóstico de prontidão: dados, equipe, integração e segurança]
