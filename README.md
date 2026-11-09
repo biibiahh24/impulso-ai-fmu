@@ -43,6 +43,21 @@ Os pontos relacionados a Cilia e Leavo AI não devem ser apresentados como cita�
 - `docs/business-case.md` — roteiro de oito slides e apresentação.
 - `apresentacao/business-case.html` — oito slides visuais, prontos para exibir ou exportar em PDF pelo navegador.
 
+
+## IMPULSO AI 3.0 — Atualização de 9/11/2026
+
+A interface foi ampliada com cadastro de contexto da empresa (nome, setor, porte e objetivo), plano de ação por dimensão, bloqueio explícito da aprovação simulada caso os dados sejam insuficientes ou não existam controles de segurança, seleção entre oportunidades, três cenários de realização do benefício (25%, 50% e 100%) e relatório executivo gerado no próprio navegador.
+
+Para demonstrar o fluxo: **Diagnóstico** → configure empresa e processo → **Gerar diagnóstico** → **Recomendações** e seleção de oportunidade → **Simulador de ROI** → **Jornada** → **Relatório**. Na tela de relatório, use **Imprimir / salvar PDF**; se preferir um documento local, escolha **Baixar relatório HTML**.
+
+### Limitações e regras de interpretação
+
+- O índice de prontidão é calculado por regras pedagógicas, e não por IA real.
+- Ausência de controles de segurança ou dados insuficientes bloqueia a aprovação no fluxo simulado, mesmo com pontuação elevada em outros critérios.
+- Cenários de ROI são hipóteses econômicas. Tempo liberado **não significa** redução automática de gastos, nem comprova lucro.
+- O relatório exportado contém os dados introduzidos pelo usuário. Recomenda-se não inserir informações pessoais ou sigilosas no protótipo público.
+- Não há autenticação, persistência, processamento em servidor, base de dados ou integração com modelos de IA.
+
 ## Grupo — preencher antes da entrega
 - **[INTEGRANTE 1 — NOME COMPLETO — RA]**
 - **[INTEGRANTE 2 — NOME COMPLETO — RA]**
