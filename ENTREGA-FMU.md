@@ -73,7 +73,7 @@ Referência para a apresentação oral: [roteiro de fala](docs/roteiro-apresenta
 
 ## CONDIÇÕES PENDENTES — obrigatórias para entrega
 
-1. [ ] **Preencher os quatro nomes completos e RAs** em **todos os artefatos e documentação**: página inicial / README, relatório, fluxograma, slides no Canva, versão HTML da apresentação e roteiros. O item 4.2 exige identificação visível nos arquivos, não apenas no README.
+1. [ ] **Completar o nome e RA de Kaua** e conferir a identificação dos quatro integrantes em **todos os artefatos e documentação**: página inicial / README, relatório, fluxograma, slides no Canva, versão HTML da apresentação e roteiros. O item 4.2 exige identificação visível nos arquivos, não apenas no README.
 2. [ ] **Conferir a documentação original das seis visitas/entrevistas**. Complementar evidências existentes e revisar os casos marcados como análise técnica, principalmente Cilia e Leavo AI. Não publicar dados pessoais de terceiros sem autorização.
 3. [ ] **Exportar o Canva** para PDF/PPTX e adicioná-lo ao repositório para preservar a versão final projetada. A versão HTML de oito slides já está no GitHub, portanto este item reforça consistência e disponibilidade.
 4. [ ] **Ensaiar e realizar apresentação oral obrigatória** (~5 minutos por grupo).
@@ -92,4 +92,4 @@ https://github.com/biibiahh24/impulso-ai-fmu
 - Abrir o fluxograma e a apresentação em janela anônima.
 - Conferir se o GitHub permanece público durante toda a avaliação.
 
-**Status:** pacote organizado com os três entregáveis. A submissão oficial só deve ser considerada concluída após os itens pendentes, principalmente identificação do grupo e envio no LXP.
+**Status:** pacote organizado com os três entregáveis. A submissão oficial só deve ser considerada concluída após os itens pendentes, principalmente identificação restante de Kaua e envio no LXP.
