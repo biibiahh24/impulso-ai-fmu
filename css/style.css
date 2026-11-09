@@ -152,3 +152,12 @@ footer{margin-left:246px;background:#f6f8fd;border:0;color:#a0acbc}
 .recommendation-context,.scenario-context{background:#f2f5fc;border-left:3px solid #3f62d7;padding:13px 16px;margin:17px 0;border-radius:0 8px 8px 0;color:#4a5c7b;font-size:12px;line-height:1.6}
 @media(max-width:1000px){.workflow-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.workflow-step{justify-content:flex-start;padding-left:12px}}
 @media(max-width:760px){.project-authors{font-size:9px}.workflow-panel{padding:19px 16px;margin:16px 0}.workflow-heading h3{font-size:17px}.workflow-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.workflow-step{font-size:10px;min-height:46px}.workflow-bottom{align-items:flex-start;flex-direction:column}.workflow-bottom .ghost{width:100%}}
+
+/* Decision-oriented opportunity comparison */
+.reco-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.reco-rank{font-weight:900;color:#a2aec1;font-size:12px;letter-spacing:1px}
+.reco-detail{padding:13px 0;border-top:1px solid #edf0f6;border-bottom:1px solid #edf0f6;margin-bottom:13px;display:grid;gap:6px;font-size:11px;color:#53627d}
+.reco-detail span:before{content:"•";color:#4566ce;margin-right:7px}
+.reco-choice{display:flex;flex-direction:column;gap:4px}
+.reco-choice button{margin-top:auto}
+.reco-choice .small-note{font-size:10px;line-height:1.5;color:#8895a8}
