@@ -111,7 +111,7 @@ $('revisar').addEventListener('click',()=>{$('decisionNote').textContent='Revise
 renderCompare();diagnostic();buildReport();updateWorkflow();
 $('analisar').addEventListener('click',()=>{diagnosisDone=true;opportunityChosen=false;simulationReviewed=false;approvalState='none';reportVisited=false;updateWorkflow()});
 $('pessoas').addEventListener('input',()=>{simulationReviewed=true;invalidateDecision()});
-['minutos','hora','dias','mensal','implantacao','extras','realizacao'].forEach(id=>$(id).addEventListener('input',()=>{simulationReviewed=true;invalidateDecision()}));
+['minutos','minutosPorCaso','metodoTempo','hora','dias','mensal','implantacao','extras','realizacao'].forEach(id=>$(id).addEventListener('input',()=>{simulationReviewed=true;invalidateDecision()}));
 $('reset').addEventListener('click',()=>{simulationReviewed=false;invalidateDecision()});
 $('aprovar').addEventListener('click',()=>{diagnostic();approvalState=blocked||!diagnosisDone||!opportunityChosen||!simulationReviewed?'none':'approved';updateWorkflow()});
 $('revisar').addEventListener('click',()=>{approvalState='review';updateWorkflow()});
@@ -214,6 +214,7 @@ function renderHistory(){
  if(arr.some(h=>h.id===prevB))b.value=prevB;
  if(!a.value&&arr[1])a.value=arr[1].id;
  if(!b.value&&arr[0])b.value=arr[0].id;
+ if(a.value&&b.value&&a.value===b.value){const alternative=arr.find(h=>h.id!==b.value);if(alternative)a.value=alternative.id}
  renderHistoryComparison();
 }
 function restoreHistory(id){
