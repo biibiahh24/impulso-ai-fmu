@@ -3,7 +3,7 @@
 
 Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a partir da pesquisa realizada durante o AI Brasil Experience 2026.
 
-> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório já contém os três artefatos em `entregaveis/`, mas a identificação completa de Kaua, a conferência de evidências e o envio do link ao LXP ainda são necessários.
+> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório já contém os três artefatos em `entregaveis/`, mas a conferência de evidências e o envio do link ao LXP ainda são necessários.
 
 ## Acesso
 - **Protótipo:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app
@@ -76,7 +76,7 @@ Para demonstrar o fluxo: **Diagnóstico** → configure empresa e processo → *
 - **Beatriz Ramos — RA 2025116740**
 - **Nicole Santos Damaceno — RA 2025102325**
 - **Victoria Maria de Carvalho Franca — RA 2025102342**
-- **Kaua — nome completo e RA pendentes**
+- **Kauã da Silva Viturino — RA 2025102893**
 
 **Prazo previsto da entrega acadêmica:** 11 de novembro de 2026.
 
