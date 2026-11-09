@@ -161,3 +161,14 @@ footer{margin-left:246px;background:#f6f8fd;border:0;color:#a0acbc}
 .reco-choice{display:flex;flex-direction:column;gap:4px}
 .reco-choice button{margin-top:auto}
 .reco-choice .small-note{font-size:10px;line-height:1.5;color:#8895a8}
+
+/* Local draft actions */
+.draft-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin:0 0 18px;padding:13px 16px;background:#fff;border:1px solid #e6ebf4;border-radius:12px}
+.draft-toolbar>div:first-child{display:grid;gap:3px}.draft-toolbar>div:first-child strong{color:#26395e;font-size:12px}
+.draft-toolbar>div:first-child span{font-size:10px;color:#8693a7}
+.draft-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.draft-actions .ghost{font-size:11px;font-weight:700;padding:8px 11px;background:#f0f4fe}
+.draft-actions #clearDraft{background:#faf6f6;color:#8b6060}
+.draft-message{font-size:11px;color:#236c56;line-height:1.4;margin:0;flex-basis:100%;empty-cells:hide}
+.draft-message:empty{display:none}
+@media(max-width:760px){.draft-toolbar{padding:11px 12px}.draft-actions{width:100%}.draft-actions .ghost{flex:1;min-width:90px}}
