@@ -25,6 +25,13 @@ Para testar localmente, abra `index.html` no navegador, mantendo as pastas `css/
 
 **Não confundir este protótipo com uma plataforma SaaS operacional.** Custos, benefícios, ROI e indicadores apresentados em cenários do sistema são hipóteses acadêmicas.
 
+## Pesquisa complementar com fontes verificadas
+
+- **[Pesquisa documental das seis empresas](docs/pesquisa-complementar-seis-empresas.md)** — distingue entrevista (E), sites oficiais (P) e análise acadêmica (A); detalha custos, benefícios, ROI, maturação, barreiras, habilidades, critérios de validação e links das fontes.
+- **[Matriz comparativa atualizada](docs/matriz-comparativa.md)** — coteja os seis casos e explicita o que ainda depende de orçamento ou evidência específica.
+- **[Relatório principal atualizado](entregaveis/01-relatorio-mvp.html)** — integra a pesquisa complementar às seções 3 a 5 e às referências.
+- A ausência de preço ou ROI público de um fornecedor **não deve ser substituída por valor inventado**. O modelo financeiro hipotético pertence ao IMPULSO AI, não aos seis fornecedores.
+
 ## Empresas analisadas
 1. **WebGlobal / AiProtus:** robôs interativos e IA; desafios logísticos relatados.
 2. **Aditum:** agentes inteligentes em processos de pagamento; adoção por equipes e priorização.
