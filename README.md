@@ -62,6 +62,16 @@ Para demonstrar o fluxo: **Diagnóstico** → configure empresa e processo → *
 - O relatório exportado contém os dados introduzidos pelo usuário. Recomenda-se não inserir informações pessoais ou sigilosas no protótipo público.
 - Não há autenticação, persistência, processamento em servidor, base de dados ou integração com modelos de IA.
 
+
+## Revisão final do protótipo — 9/11/2026
+
+- Dashboard sincronizado com o nome, setor, porte, processo e oportunidade em análise; removido o indicador fictício de oito processos mapeados (um processo na demonstração).
+- Indicação explícita de dados fictícios e hipóteses econômicas nas telas iniciais.
+- Diagnóstico e bloqueios atualizados sempre que dados, equipe, integração ou segurança mudam. Mudanças invalidam a aprovação demonstrativa anterior.
+- Teste automatizado em navegador Chromium: alteração do perfil, bloqueio por ausência de controles/dados, aprovação após correção, ROI atualizado, relatório com dados da empresa e exportação HTML; nenhum erro JavaScript detectado.
+- Teste em viewport móvel de 390 pixels sem rolagem horizontal; PDF gerado no navegador.
+- A configuração de autenticação da Vercel foi desativada para permitir acesso público ao site durante a avaliação FMU. Não inserir informações sigilosas, pois o protótipo é público.
+
 ## Grupo — preencher antes da entrega
 - **[INTEGRANTE 1 — NOME COMPLETO — RA]**
 - **[INTEGRANTE 2 — NOME COMPLETO — RA]**
