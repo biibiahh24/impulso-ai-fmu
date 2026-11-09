@@ -1,7 +1,7 @@
 # Roteiro de apresentação oral — 5 minutos
 **Missão 2 · FMU · IMPULSO AI**
 
-**Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kaua — nome completo e RA pendentes.
+**Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kauã da Silva Viturino — RA 2025102893.
 
 ## Integrante 1 — 0:00 a 1:05 | Slides 1 e 2
 
