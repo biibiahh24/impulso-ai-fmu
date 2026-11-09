@@ -1,7 +1,7 @@
 # Business Case — roteiro de 8 slides (~5 minutos)
 **Missão 2 — IA Transformando Negócios | FMU**
 
-> Capa e materiais finais precisam dos nomes completos e RAs dos três integrantes.
+> Capa e materiais finais precisam dos nomes completos e RAs dos quatro integrantes.
 
 ## Slide 1 — IMPULSO AI
 Da intenção à implementação. Objetivo: transformar aprendizado do evento em MVP conceitual de adoção de IA para pequenas empresas.
@@ -27,7 +27,7 @@ Desenvolvimento inicial ilustrativo: R$ 13.500; operação: R$ 1.200/mês. Cená
 ## Slide 8 — Profissionais, riscos e conclusão
 Novas competências: dados, integração, privacidade, gestão e comunicação. Humanos tomam decisões críticas. O IMPULSO AI reduz incerteza na adoção.
 
-## Distribuição entre três integrantes
+## Distribuição entre quatro integrantes
 1. Slides 1–3: contexto e empresas (~1min40s).
 2. Slides 4–5: problema e solução (~1min40s).
 3. Slides 6–8: jornada, economia e conclusão (~1min40s).
