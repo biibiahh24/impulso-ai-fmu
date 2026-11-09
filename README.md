@@ -91,6 +91,15 @@ Além do visual, o MVP passou a orientar o usuário em **cinco etapas reais da d
 
 **Limitações mantidas:** não há banco de dados, login, sincronização entre dispositivos nem conexão com modelo de IA. As decisões são locais e ilustrativas. O indicador de conclusão representa apenas tarefas demonstradas nesta sessão.
 
+## Revisão de funcionamento e fluxo — 09/11/2026
+
+- Fluxo demonstrativo de **cinco etapas** testado em desktop (1440px) e celular (390px).
+- A aprovação agora **exige** diagnóstico concluído, oportunidade selecionada, revisão de pelo menos uma premissa econômica e ausência de bloqueios de dados/segurança.
+- O relatório executivo distingue **aprovação simulada**, **revisão solicitada** e **ausência de aprovação**; nenhuma dessas decisões executa integrações reais.
+- **Rascunho local:** botões de salvar, recuperar e apagar as informações neste navegador via `localStorage`. Não existe conta, sincronização, histórico remoto ou armazenamento em servidor. Ao recuperar um rascunho, o fluxo e as aprovações são reiniciados, exigindo reavaliação.
+- Testes automatizados em Chromium: atualização de empresa e objetivo, ranking contextual, ROI, aprovação bloqueada e aprovada, relatório com dados da empresa, download HTML, recuperação local após recarregamento, eliminação do rascunho; **zero erros JavaScript** e sem rolagem horizontal.
+- Limitações: o sistema é um **MVP conceitual**, com recomendações por regras e números hipotéticos. Integrações reais, autenticação, banco de dados e modelos de IA não estão implementados.
+
 ## Integrantes do grupo
 - **Beatriz Ramos — RA 2025116740**
 - **Nicole Santos Damaceno — RA 2025102325**
