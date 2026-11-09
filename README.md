@@ -3,7 +3,7 @@
 
 Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a partir da pesquisa realizada durante o AI Brasil Experience 2026.
 
-> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório já contém os três artefatos em `entregaveis/`, mas a identificação dos integrantes, a conferência de evidências e o envio do link ao LXP ainda são necessários.
+> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório já contém os três artefatos em `entregaveis/`, mas a identificação completa de Kaua, a conferência de evidências e o envio do link ao LXP ainda são necessários.
 
 ## Acesso
 - **Protótipo:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app
@@ -72,7 +72,7 @@ Para demonstrar o fluxo: **Diagnóstico** → configure empresa e processo → *
 - Teste em viewport móvel de 390 pixels sem rolagem horizontal; PDF gerado no navegador.
 - A configuração de autenticação da Vercel foi desativada para permitir acesso público ao site durante a avaliação FMU. Não inserir informações sigilosas, pois o protótipo é público.
 
-## Grupo — preencher antes da entrega
+## Integrantes do grupo
 - **Beatriz Ramos — RA 2025116740**
 - **Nicole Santos Damaceno — RA 2025102325**
 - **Victoria Maria de Carvalho Franca — RA 2025102342**
