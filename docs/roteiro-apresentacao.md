@@ -3,7 +3,7 @@
 
 **Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kaua — nome completo e RA pendentes.
 
-## Integrante 1 — 0:00 a 1:40 | Slides 1 a 3
+## Integrante 1 — 0:00 a 1:10 | Slides 1 e 2
 
 **Slide 1 — 20 segundos.** “Este é o IMPULSO AI, uma proposta de serviço B2B SaaS para orientar pequenas empresas na adoção responsável de inteligência artificial. Nosso MVP é conceitual e foi desenvolvido a partir da pesquisa com seis empresas relacionadas ao AI Brasil Experience 2026.”
 
@@ -11,7 +11,7 @@
 
 **Slide 3 — 35 segundos.** “Os pontos de atenção incluem integração com sistemas, qualidade de dados, proteção de informações, capacitação e revisão humana. É importante separar os relatos efetivamente documentados dos riscos técnicos que nós próprios analisamos.”
 
-## Integrante 2 — 1:40 a 3:20 | Slides 4 e 5
+## Integrante 2 — 1:10 a 2:20 | Slides 3 e 4
 
 **Slide 4 — 45 segundos.** “Identificamos uma lacuna: muitas pequenas empresas não sabem qual processo automatizar, se estão preparadas ou como avaliar o investimento. A solução proposta é uma jornada que reduz essa incerteza e organiza decisões antes da implementação.”
 
