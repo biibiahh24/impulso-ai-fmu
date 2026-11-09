@@ -73,9 +73,10 @@ Para demonstrar o fluxo: **Diagnóstico** → configure empresa e processo → *
 - A configuração de autenticação da Vercel foi desativada para permitir acesso público ao site durante a avaliação FMU. Não inserir informações sigilosas, pois o protótipo é público.
 
 ## Grupo — preencher antes da entrega
-- **[INTEGRANTE 1 — NOME COMPLETO — RA]**
-- **[INTEGRANTE 2 — NOME COMPLETO — RA]**
-- **[INTEGRANTE 3 — NOME COMPLETO — RA]**
+- **Beatriz Ramos — RA 2025116740**
+- **Nicole Santos Damaceno — RA 2025102325**
+- **Victoria Maria de Carvalho Franca — RA 2025102342**
+- **Kaua — nome completo e RA pendentes**
 
 **Prazo previsto da entrega acadêmica:** 11 de novembro de 2026.
 
