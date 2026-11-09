@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1660" viewBox="0 0 1200 1660" role="img" aria-labelledby="title desc">
+<title id="title">IMPULSO AI — Fluxograma completo da jornada do usuário</title>
+<desc id="desc">Processo do gestor, diagnósticos, recomendação apoiada por IA prevista, simulação de ROI, aprovações humanas, testes, monitoramento, ciclos de revisão e indicadores.</desc>
+<rect width="1200" height="1660" fill="#f3f7fb"/>
+<rect width="1200" height="120" fill="#102743"/><text x="68" y="57" font-family="Arial" font-size="33" font-weight="bold" fill="#ffffff">ϟ IMPULSO AI</text><text x="68" y="90" font-family="Arial" font-size="19" fill="#c4dbf2">Jornada do cliente: decisões, IA, governança e métricas</text>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7" fill="none" stroke="#6184aa" stroke-width="1.5"/></marker><style>.step{fill:white;stroke:#d2dfeb;stroke-width:2}.ai{fill:#eaf3ff;stroke:#327bd0;stroke-width:2}.dec{fill:#fff7e6;stroke:#c99743;stroke-width:2}.text{font-family:Arial,sans-serif;fill:#163650;font-weight:700;font-size:19px}.meta{font-family:Arial,sans-serif;fill:#617c96;font-size:15px}.a{fill:none;stroke:#6184aa;stroke-width:3;marker-end:url(#arrow)}.label{font-family:Arial,sans-serif;fill:#4b6782;font-size:16px;font-weight:bold}.foot{font-family:Arial,sans-serif;fill:#687d94;font-size:15px}</style></defs>
+<rect class="step" x="280" y="152" width="640" height="95" rx="16"/><text class="text" x="600" y="190" text-anchor="middle">1. Gestor cadastra o processo</text><text class="meta" x="600" y="220" text-anchor="middle">HUMANO · KPI: cadastros e completude dos dados</text>
+<path class="a" d="M600 247V283"/>
+<rect class="ai" x="280" y="284" width="640" height="95" rx="16"/><text class="text" x="600" y="321" text-anchor="middle">2. Diagnóstico de prontidão</text><text class="meta" x="600" y="349" text-anchor="middle">REGRAS + IA FUTURA · KPI: tempo e qualidade do diagnóstico</text>
+<path class="a" d="M600 379V416"/>
+<rect class="ai" x="280" y="417" width="640" height="95" rx="16"/><text class="text" x="600" y="454" text-anchor="middle">3. Recomendações de automação</text><text class="meta" x="600" y="483" text-anchor="middle">IA PREVISTA + REVISÃO · KPI: relevância das propostas</text>
+<path class="a" d="M600 512V548"/>
+<rect class="step" x="280" y="549" width="640" height="95" rx="16"/><text class="text" x="600" y="587" text-anchor="middle">4. Simulação de custos e ROI</text><text class="meta" x="600" y="616" text-anchor="middle">FÓRMULAS · KPI: ROI, payback, sensibilidade e custo</text>
+<path class="a" d="M600 644V675"/>
+<path class="dec" d="M600 679L784 765L600 851L416 765Z"/><text class="text" x="600" y="758" text-anchor="middle">5. Gestor</text><text class="text" x="600" y="783" text-anchor="middle">aprova?</text>
+<path class="a" d="M784 765H946V465H925"/><text class="label" x="855" y="751">NÃO</text><text class="meta" x="960" y="630">Revisar</text><text class="meta" x="960" y="650">premissas</text>
+<path class="a" d="M600 851V893"/><text class="label" x="622" y="880">SIM</text>
+<rect class="step" x="280" y="894" width="640" height="95" rx="16"/><text class="text" x="600" y="932" text-anchor="middle">6. Teste controlado do fluxo</text><text class="meta" x="600" y="961" text-anchor="middle">SUPERVISÃO HUMANA · KPI: sucesso e precisão dos testes</text>
+<path class="a" d="M600 989V1024"/>
+<path class="dec" d="M600 1026L805 1120L600 1214L395 1120Z"/><text class="text" x="600" y="1109" text-anchor="middle">7. Supervisor</text><text class="text" x="600" y="1134" text-anchor="middle">valida?</text>
+<path class="a" d="M395 1120H229V941H278"/><text class="label" x="260" y="1103">NÃO: corrigir</text><path class="a" d="M600 1214V1260"/><text class="label" x="623" y="1239">SIM</text>
+<rect class="step" x="280" y="1261" width="640" height="95" rx="16"/><text class="text" x="600" y="1299" text-anchor="middle">8. Autorizar implementação futura</text><text class="meta" x="600" y="1329" text-anchor="middle">HUMANO · KPI: aprovações e conformidade</text>
+<path class="a" d="M600 1356V1392"/>
+<rect class="ai" x="280" y="1393" width="640" height="95" rx="16"/><text class="text" x="600" y="1430" text-anchor="middle">9. Monitorar indicadores e resultados</text><text class="meta" x="600" y="1460" text-anchor="middle">DASHBOARD · KPIs: tempo, custos, adoção, qualidade, satisfação</text>
+<path class="a" d="M280 1437H130V330H276"/><text class="label" x="83" y="850" transform="rotate(-90 83 850)">Se metas não forem atingidas: novo diagnóstico</text>
+<rect x="68" y="1530" width="1064" height="95" rx="13" fill="#e6edf5"/><text x="92" y="1558" class="foot">Legenda: azul = etapa com suporte computacional / IA prevista; amarelo = decisão humana; branco = etapa de processo.</text><text x="92" y="1584" class="foot">O protótipo acadêmico atual usa regras locais e cálculos; não há IA real nem ativação automática.</text><text x="92" y="1608" class="foot">Missão 2 • FMU • [Integrante 1 — RA] | [Integrante 2 — RA] | [Integrante 3 — RA]</text>
+</svg>
