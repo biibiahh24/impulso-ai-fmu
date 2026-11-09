@@ -3,10 +3,13 @@
 
 Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a partir da pesquisa realizada durante o AI Brasil Experience 2026.
 
+> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório já contém os três artefatos em `entregaveis/`, mas a identificação dos integrantes, a conferência de evidências e o envio do link ao LXP ainda são necessários.
+
 ## Acesso
 - **Protótipo:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app
 - **Apresentação editável no Canva (8 slides):** https://www.canva.com/d/aij3bnHcRKTj5HQ
-- **Apresentação HTML auxiliar:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/apresentacao/business-case.html
+- **Apresentação de oito slides depositada no GitHub:** [entregaveis/03-business-case.html](entregaveis/03-business-case.html)
+- **Roteiro de apresentação oral:** [docs/roteiro-apresentacao.md](docs/roteiro-apresentacao.md)
 - **Repositório:** https://github.com/biibiahh24/impulso-ai-fmu
 
 ## Problema
@@ -18,7 +21,7 @@ O IMPULSO AI é uma proposta de plataforma **B2B SaaS** que orienta a adoção d
 ## Protótipo executável
 O site em `index.html` é um **protótipo web estático**, sem bibliotecas, banco de dados ou API de IA. O diagnóstico usa regras demonstrativas; a simulação financeira é calculada por fórmulas locais; as propostas de automação e decisões são conceituais. Não há envio das respostas a um servidor.
 
-Para testar localmente, basta abrir `index.html` no navegador.
+Para testar localmente, abra `index.html` no navegador, mantendo as pastas `css/` e `js/` no mesmo diretório. O CSS e o JavaScript estão organizados em arquivos separados.
 
 **Não confundir este protótipo com uma plataforma SaaS operacional.** Custos, benefícios, ROI e indicadores apresentados em cenários do sistema são hipóteses acadêmicas.
 
@@ -41,7 +44,8 @@ Os pontos relacionados a Cilia e Leavo AI não devem ser apresentados como cita�
 - `docs/mvp-e-viabilidade.md` — problema, produto, modelo de negócio e cenário financeiro.
 - `docs/jornada.md` — fluxograma Mermaid com decisões humanas.
 - `docs/business-case.md` — roteiro de oito slides e apresentação.
-- `apresentacao/business-case.html` — oito slides visuais, prontos para exibir ou exportar em PDF pelo navegador.
+- `entregaveis/03-business-case.html` — versão da apresentação executiva de oito slides, acessível diretamente pelo GitHub e navegador.
+- `ENTREGA-FMU.md` — auditoria completa dos requisitos, arquivos e pendências da submissão.
 
 
 ## IMPULSO AI 3.0 — Atualização de 9/11/2026
