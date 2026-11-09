@@ -134,4 +134,92 @@ $('clearDraft').addEventListener('click',()=>{
  catch(e){draftMessage('Não foi possível apagar os dados locais.')}
 });
 
+
+/* Scenario templates and local history, no external storage */
+const businessTemplates={
+ comercio:{empresaNome:'Loja Aurora — exemplo',empresaSetor:'Comércio',empresaPorte:'Microempresa',empresaObjetivo:'Melhorar atendimento',proc:'Triagem de pedidos e dúvidas',desc:'A equipe confere dúvidas de entrega, trocas e pedidos e encaminha cada solicitação.',vol:'65',dados:'10',equipe:'10',integracao:'10',seguranca:'20',pessoas:'5',minutosPorCaso:'2.5',metodoTempo:'volume',hora:'26',dias:'22',mensal:'450',implantacao:'1200',extras:'600',realizacao:'50'},
+ servicos:{empresaNome:'Consultoria Horizonte — exemplo',empresaSetor:'Serviços',empresaPorte:'Pequena empresa',empresaObjetivo:'Organizar dados e documentos',proc:'Pesquisa de contratos e documentos',desc:'A equipe precisa localizar informações em contratos e documentos internos antes de responder demandas.',vol:'30',dados:'20',equipe:'10',integracao:'10',seguranca:'20',pessoas:'6',minutosPorCaso:'4',metodoTempo:'volume',hora:'38',dias:'22',mensal:'650',implantacao:'2200',extras:'1000',realizacao:'50'},
+ industria:{empresaNome:'Fábrica Atlas — exemplo',empresaSetor:'Indústria',empresaPorte:'Média empresa',empresaObjetivo:'Reduzir tempo de tarefas',proc:'Registro e conferência de ordens de produção',desc:'Registros e informações das ordens são conferidos manualmente antes de atualizar sistemas internos.',vol:'55',dados:'10',equipe:'20',integracao:'10',seguranca:'20',pessoas:'8',minutosPorCaso:'6',metodoTempo:'volume',hora:'34',dias:'22',mensal:'900',implantacao:'3500',extras:'1500',realizacao:'50'}
+};
+const scenarioInputs=['empresaNome','empresaSetor','empresaPorte','empresaObjetivo','proc','desc','vol','dados','equipe','integracao','seguranca','pessoas','minutos','minutosPorCaso','metodoTempo','hora','dias','mensal','implantacao','extras','realizacao'];
+function invalidateWorkflowAll(){
+ diagnosisDone=false;opportunityChosen=false;simulationReviewed=false;approvalState='none';reportVisited=false;
+ selectedOpportunity=options[0].name;
+ $('status').textContent='Cenário alterado: realize o diagnóstico antes de aprovar.';
+ updateWorkflow();
+}
+function setScenarioFields(values){
+ scenarioInputs.forEach(id=>{
+  const val=values[id];if(val===undefined||val===null)return;
+  const el=$(id),v=String(val);
+  if(el.tagName==='SELECT'){if([...el.options].some(opt=>opt.value===v))el.value=v}
+  else if(el.type==='number'){if(v!==''&&Number.isFinite(Number(v))&&Number(v)>=0)el.value=v}
+  else el.value=v.slice(0,el.maxLength>0?el.maxLength:900);
+ });
+ syncTimeMode();diagnostic();showContext();calc();buildReport();
+}
+document.querySelectorAll('[data-template]').forEach(button=>button.addEventListener('click',()=>{
+ const template=businessTemplates[button.dataset.template];if(!template)return;
+ setScenarioFields(template);invalidateWorkflowAll();
+ $('templateMessage').textContent='Cenário fictício de '+$('empresaSetor').value.toLowerCase()+' carregado. Personalize os campos e clique em Analisar prontidão.';
+ show('diagnostico');
+}));
+const historyKey='impulso-ai-fmu-history-v1';
+function readHistory(){
+ try{const arr=JSON.parse(localStorage.getItem(historyKey)||'[]');return Array.isArray(arr)?arr.filter(h=>h&&h.id&&h.fields&&h.metrics).slice(0,12):[]}
+ catch(e){return []}
+}
+function writeHistory(items){
+ try{localStorage.setItem(historyKey,JSON.stringify(items.slice(0,12)));return true}catch(e){$('saveAnalysisStatus').textContent='Armazenamento indisponível neste navegador.';return false}
+}
+const numberLabel=(value,suffix='')=>(Number.isFinite(value)?Number(value).toLocaleString('pt-BR',{maximumFractionDigits:1}):'—')+suffix;
+function historyLabel(h){return h.fields.empresaNome+' · '+h.fields.proc}
+function renderHistory(){
+ const arr=readHistory(),list=$('historyList'),a=$('compareA'),b=$('compareB');
+ if(!arr.length){list.innerHTML='<p class="history-empty">Nenhuma análise salva. Complete um diagnóstico, selecione uma oportunidade e salve seu cenário na tela de ROI.</p>'}
+ else{
+  list.innerHTML=arr.map(h=>'<div class="history-row"><div><b>'+safe(historyLabel(h))+'</b><small>'+safe(h.date||'')+' · Prontidão '+numberLabel(Number(h.metrics.score))+'/100 · ROI '+numberLabel(Number(h.metrics.roi),'%')+'</small></div><div class="history-row-actions"><button type="button" class="ghost" data-restore="'+safe(h.id)+'">Recuperar</button><button type="button" class="ghost" data-delete="'+safe(h.id)+'">Excluir</button></div></div>').join('');
+  list.querySelectorAll('[data-restore]').forEach(btn=>btn.addEventListener('click',()=>restoreHistory(btn.dataset.restore)));
+  list.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',()=>{writeHistory(readHistory().filter(h=>h.id!==btn.dataset.delete));renderHistory()}));
+ }
+ const prevA=a.value,prevB=b.value;
+ const opts=arr.map(h=>'<option value="'+safe(h.id)+'">'+safe(h.fields.empresaNome)+' — '+safe(h.date||'')+'</option>').join('');
+ a.innerHTML='<option value="">Selecione A</option>'+opts;b.innerHTML='<option value="">Selecione B</option>'+opts;
+ if(arr.some(h=>h.id===prevA))a.value=prevA;
+ if(arr.some(h=>h.id===prevB))b.value=prevB;
+ if(!a.value&&arr[1])a.value=arr[1].id;
+ if(!b.value&&arr[0])b.value=arr[0].id;
+ renderHistoryComparison();
+}
+function restoreHistory(id){
+ const h=readHistory().find(v=>v.id===id);if(!h)return;
+ setScenarioFields(h.fields);
+ selectedOpportunity=options.some(o=>o.name===h.selectedOpportunity)?h.selectedOpportunity:options[0].name;
+ invalidateWorkflowAll();renderCompare();showContext();calc();buildReport();
+ $('draftMessage').textContent='Análise recuperada do histórico. Revise e aprove novamente; nenhuma aprovação anterior foi restaurada.';
+ show('diagnostico');
+}
+function renderHistoryComparison(){
+ const arr=readHistory(),a=arr.find(h=>h.id===$('compareA').value),b=arr.find(h=>h.id===$('compareB').value),dest=$('compareResults');
+ if(!a||!b){dest.innerHTML='<p class="small-note">Salve pelo menos duas análises para comparar os resultados.</p>';return}
+ if(a.id===b.id){dest.innerHTML='<p class="small-note">Escolha dois registros diferentes para realizar a comparação.</p>';return}
+ const indicators=[['Prontidão','score','/100',false],['Horas mensais','hours',' h',false],['Benefício anual','benefit','',true],['Custo anual','cost','',true],['ROI econômico','roi','%',false]];
+ const format=(v,money,suffix)=>v===null||!Number.isFinite(Number(v))?'—':money?fmt(v):numberLabel(Number(v),suffix);
+ dest.innerHTML='<div class="history-comparison"><div class="compare-heading"><span>Indicador</span><span>Anterior (A)</span><span>Atual (B)</span><span>Variação</span></div>'+indicators.map(([name,key,suffix,money])=>{
+  const v1=a.metrics[key],v2=b.metrics[key],delta=v1===null||v2===null?null:v2-v1;
+  return '<div class="compare-line"><span>'+name+'</span><strong>'+format(v1,money,suffix)+'</strong><strong>'+format(v2,money,suffix)+'</strong><strong class="'+(delta===null?'':delta>=0?'delta-pos':'delta-neg')+'">'+(delta!==null&&delta>0?'+':'')+format(delta,money,suffix)+'</strong></div>'
+ }).join('')+'</div><p class="small-note">Comparação de hipóteses. Aumento de ROI não comprova ganho empresarial real; observe a mudança das premissas e dos riscos.</p>';
+}
+$('saveAnalysis').addEventListener('click',()=>{
+ if(!diagnosisDone||!opportunityChosen){$('saveAnalysisStatus').textContent='Conclua o diagnóstico e selecione uma oportunidade antes de salvar.';return}
+ const r=calc(),score=diagnostic(),fields=Object.fromEntries(scenarioInputs.map(id=>[id,$(id).value]));
+ const entry={id:String(Date.now())+'-'+Math.random().toString(36).slice(2,7),date:new Date().toLocaleString('pt-BR'),fields,selectedOpportunity,metrics:{score,hours:r.employees*r.mins*r.days/60,benefit:r.yearBenefit,cost:r.yearCost,roi:r.roi,blocked}};
+ const arr=[entry,...readHistory()].slice(0,12);
+ if(writeHistory(arr)){$('saveAnalysisStatus').textContent='Análise salva apenas neste navegador. Compare na aba Histórico.';renderHistory()}
+});
+$('compareA').addEventListener('change',renderHistoryComparison);
+$('compareB').addEventListener('change',renderHistoryComparison);
+$('clearHistory').addEventListener('click',()=>{if(!readHistory().length)return;if(window.confirm('Apagar todas as análises salvas neste navegador?')){writeHistory([]);renderHistory()}});
+renderHistory();
+
 })();
