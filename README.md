@@ -100,6 +100,17 @@ Além do visual, o MVP passou a orientar o usuário em **cinco etapas reais da d
 - Testes automatizados em Chromium: atualização de empresa e objetivo, ranking contextual, ROI, aprovação bloqueada e aprovada, relatório com dados da empresa, download HTML, recuperação local após recarregamento, eliminação do rascunho; **zero erros JavaScript** e sem rolagem horizontal.
 - Limitações: o sistema é um **MVP conceitual**, com recomendações por regras e números hipotéticos. Integrações reais, autenticação, banco de dados e modelos de IA não estão implementados.
 
+## Atualização do produto — Modelos, relatório, histórico e indicadores (09/11/2026)
+
+Quatro melhorias funcionais de alta e média prioridade foram implementadas e estão disponíveis no site publicado:
+
+1. **Modelos prontos de empresa:** botões **Comércio**, **Serviços** e **Indústria** na tela Diagnóstico, que preenchem um contexto completo de exemplo com volume, processo, dados, equipe, segurança e premissas de ROI. Os cenários são totalmente fictícios, editáveis e reiniciam aprovações anteriores.
+2. **Indicadores ligados ao processo:** o volume diário do diagnóstico alimenta o simulador. No modo **Baseado no volume**, minutos economizados por pessoa por dia = (solicitações/dia × minutos poupados por solicitação) ÷ funcionários. O sistema calcula solicitações mensais, tempo liberado e ROI. Há também modo **Manual**, explicitamente identificado, para preservar cenários independentes.
+3. **Histórico e comparação local:** botão **Salvar análise no histórico** após diagnóstico e escolha de oportunidade. Até 12 registros ficam no armazenamento local do navegador e podem ser restaurados, excluídos ou comparados em prontidão, horas/mês, benefícios, custos e ROI. Não existe banco de dados remoto; ao restaurar, decisões anteriores não são reaproveitadas.
+4. **Relatório executivo visual:** capa personalizada, quatro indicadores, tabela de prontidão, plano de ações, oportunidade escolhida, gráfico comparativo de benefício/custo/saldo, cálculo econômico e governança. Na seção **Relatório**, use **Gerar PDF** e, na janela de impressão do navegador, escolha **Salvar como PDF**. O HTML complementar também pode ser baixado.
+
+**Validação em navegador Chromium:** modelos de comércio e indústria, cálculo derivado do volume, alteração do tempo por solicitação, histórico com dois registros, comparação com variações numéricas, recuperação com progresso reiniciado, bloqueios e aprovações, relatório com três barras e quatro KPIs, download HTML e geração de PDF válido (assinatura PDF-1.4). Sem erros JavaScript identificados; testes em desktop e celular. Os resultados são **simulações acadêmicas**, não provas de ROI observado ou IA real.
+
 ## Integrantes do grupo
 - **Beatriz Ramos — RA 2025116740**
 - **Nicole Santos Damaceno — RA 2025102325**
