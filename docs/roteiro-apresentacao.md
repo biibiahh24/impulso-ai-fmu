@@ -1,7 +1,7 @@
 # Roteiro de apresentação oral — 5 minutos
 **Missão 2 · FMU · IMPULSO AI**
 
-**Integrantes:** [NOME COMPLETO — RA] · [NOME COMPLETO — RA] · [NOME COMPLETO — RA].
+**Integrantes:** Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kaua — nome completo e RA pendentes.
 
 ## Integrante 1 — 0:00 a 1:40 | Slides 1 a 3
 
@@ -17,13 +17,19 @@
 
 **Slide 5 — 55 segundos.** “O IMPULSO AI permite registrar o contexto da empresa, fazer um diagnóstico de dados, equipe, integração e segurança, comparar oportunidades, simular cenários e gerar um relatório executivo. O site demonstra regras locais e cálculos financeiros; a IA generativa está prevista para uma versão futura. Vamos mostrar rapidamente a tela de diagnóstico e o ROI.” **Demonstração curta, com valores padrão.**
 
-## Integrante 3 — 3:20 a 5:00 | Slides 6 a 8
+## Integrante 3 — 3:20 a 4:10 | Slides 6 e 7
 
 **Slide 6 — 35 segundos.** “A jornada inclui uma decisão explícita do gestor e uma validação humana antes de qualquer implementação. Falhas devolvem o processo à revisão. Os indicadores propostos são tempo, custo, precisão, qualidade e adesão.”
 
 **Slide 7 — 40 segundos.** “No cenário hipotético, dez colaboradores liberam 15 minutos por dia durante 22 dias, com valor-hora de 30 reais. Isso representa 19.800 reais por ano em capacidade potencial. Uma assinatura de 600 reais por mês mais implantação de 1.800 resulta em 9 mil reais de custo no primeiro ano, levando a ROI econômico potencial de 120% se a capacidade for integralmente aproveitada. Esses valores não são benefícios comprovados nem necessariamente economia em caixa.”
 
 **Slide 8 — 25 segundos.** “Concluímos que a IA transforma processos, mas também exige novas competências em dados, integração, segurança e gestão de mudanças. A proposta é validar o IMPULSO AI com cinco pequenas empresas antes de qualquer comercialização.”
+
+## Integrante 4 — 4:10 a 5:00 | Slide 8 e encerramento
+
+**Slide 8 — 25 segundos.** “Concluímos que a IA transforma processos, mas também exige novas competências em dados, integração, segurança e gestão de mudanças. A proposta é validar o IMPULSO AI com cinco pequenas empresas antes de qualquer comercialização.”
+
+**Encerramento — 25 segundos.** “O protótipo está disponível para navegação no link da Vercel, e os três entregáveis acadêmicos estão publicados no repositório GitHub da equipe.”
 
 ## Demonstração rápida de contingência
 
