@@ -78,4 +78,43 @@ $('downloadReport').addEventListener('click',()=>{reportVisited=true;updateWorkf
 
 ['dados','equipe','integracao','seguranca'].forEach(id=>$(id).addEventListener('change',()=>{diagnostic();diagnosisDone=false;opportunityChosen=false;simulationReviewed=false;invalidateDecision()}));
 ['proc','desc','vol'].forEach(id=>$(id).addEventListener('input',()=>{showContext();diagnosisDone=false;opportunityChosen=false;simulationReviewed=false;invalidateDecision()}));
+
+const draftKey='impulso-ai-fmu-draft-v1';
+const draftIds=['empresaNome','empresaSetor','empresaPorte','empresaObjetivo','proc','desc','vol','dados','equipe','integracao','seguranca','pessoas','minutos','hora','dias','mensal','implantacao','extras','realizacao'];
+function draftMessage(message){$('draftMessage').textContent=message}
+$('saveDraft').addEventListener('click',()=>{
+ try{
+  const values=Object.fromEntries(draftIds.map(id=>[id,$(id).value]));
+  localStorage.setItem(draftKey,JSON.stringify({version:1,values,selectedOpportunity}));
+  draftMessage('Rascunho salvo somente neste navegador. Não é enviado para nenhum servidor.');
+ }catch(e){draftMessage('Não foi possível salvar neste navegador. Verifique se o armazenamento local está permitido.')}
+});
+$('loadDraft').addEventListener('click',()=>{
+ try{
+  const item=localStorage.getItem(draftKey);
+  if(!item){draftMessage('Nenhum rascunho encontrado neste navegador.');return}
+  const draft=JSON.parse(item);
+  if(draft.version!==1||!draft.values||typeof draft.values!=='object')throw Error('Versão incompatível');
+  draftIds.forEach(id=>{
+   const value=draft.values[id];
+   if(typeof value!=='string')return;
+   const el=$(id);
+   if(el.tagName==='SELECT'){
+    if([...el.options].some(opt=>opt.value===value))el.value=value;
+   }else if(el.type==='number'){
+    if(value!==''&&Number.isFinite(Number(value))&&Number(value)>=0)el.value=value;
+   }else el.value=value.slice(0,el.maxLength>0?el.maxLength:900);
+  });
+  selectedOpportunity=options.some(o=>o.name===draft.selectedOpportunity)?draft.selectedOpportunity:options[0].name;
+  diagnosisDone=false;opportunityChosen=false;simulationReviewed=false;approvalState='none';reportVisited=false;
+  diagnostic();calc();showContext();renderCompare();buildReport();updateWorkflow();
+  $('status').textContent='Rascunho recuperado: faça novo diagnóstico antes de aprovar.';
+  draftMessage('Rascunho recuperado. Por segurança, decisões e aprovações anteriores não são restauradas.');
+ }catch(e){draftMessage('Não foi possível recuperar os dados. O rascunho pode estar inválido.')}
+});
+$('clearDraft').addEventListener('click',()=>{
+ try{localStorage.removeItem(draftKey);draftMessage('Rascunho local apagado. Os campos atuais permanecem até você recarregar ou modificar a página.')}
+ catch(e){draftMessage('Não foi possível apagar os dados locais.')}
+});
+
 })();
