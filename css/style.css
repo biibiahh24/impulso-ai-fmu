@@ -33,3 +33,54 @@ button{transition:transform .18s,box-shadow .18s,background .18s}button:hover{tr
 @media print{header,main,footer{display:none!important}body{background:white;color:#203850}#reportPrint{display:block!important;max-width:850px;margin:0 auto;padding:28px;font-family:Arial,sans-serif;font-size:12px;line-height:1.6}#reportPrint h1{font-size:30px;color:#102743}#reportPrint h2{font-size:17px;border-bottom:1px solid #cdddee;padding-bottom:7px;margin-top:26px}#reportPrint .report-warning{padding:12px;background:#fff5e6;border-left:4px solid #c2862d;print-color-adjust:exact}#reportPrint table{width:100%;border-collapse:collapse}#reportPrint td,#reportPrint th{border:1px solid #cad8e8;padding:7px;text-align:left}@page{size:A4;margin:16mm}}
 
 .demo-label{display:inline-block;font-size:10px;letter-spacing:1.1px;font-weight:800;border:1px solid #9dcfff80;border-radius:30px;padding:7px 10px;background:#ffffff13;color:#d8ecff;margin:10px 0 2px}.ready-summary .sub{margin-bottom:4px}.ready-summary strong{color:#17466f}
+
+
+/* IMPULSO DESIGN SYSTEM — editorial, sober and distinct from generic AI dashboards */
+:root{--dark:#111c30;--blue:#245bd7;--light:#f5f4f0;--line:#e5e6e4;--ink:#202b3d;--muted:#657184;--focus:#245bd7;--good:#178366}
+body{font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:var(--light);color:var(--ink);font-size:14px;line-height:1.52}
+header{background:#111d31;padding-top:22px;padding-bottom:0;border-bottom:1px solid #2a3650}
+header h1{font-size:21px;letter-spacing:-.85px;font-weight:760}
+header h1 span{color:#91b6fa}header small{font-size:11px;letter-spacing:.04em;color:#b3bfce}
+header .brand-mark{display:grid;place-items:center;width:43px;height:43px;background:#e8edfa!important;color:#183e84;border-radius:10px!important;font-family:Georgia,serif;font-weight:bold;font-size:25px!important;padding:0!important}
+nav{gap:0;margin-top:17px;padding-bottom:0}nav button{border-radius:0!important;border-bottom:2px solid transparent;padding:13px 17px;color:#b9c5d2;font-size:12px;font-weight:650;letter-spacing:.01em}
+nav button.active,nav button:hover{background:transparent!important;color:#fff;border-bottom-color:#91b6fa}nav button:hover{transform:none}
+main{max-width:1190px;padding-top:31px}
+.hero{background:#142640;border:1px solid #1b3455;border-radius:12px;box-shadow:none;padding:41px 47px;min-height:320px}
+.hero:after{content:none}
+.hero:before{content:"IMPULSO / 01";position:absolute;right:43px;top:42px;font-size:11px;letter-spacing:.2em;color:#8eadd6}
+.hero h2{font-size:clamp(37px,4vw,53px);line-height:1.07;letter-spacing:-2.3px;font-weight:750;margin-top:18px}
+.hero p{font-size:14px;line-height:1.8;color:#cad7e8;max-width:620px}
+.eyebrow{font-size:10px;letter-spacing:.13em;font-weight:760;color:#3369c7}
+.hero .eyebrow{color:#91b6fa}.demo-label{border:0;background:#ffffff10;border-left:2px solid #9fbfff;border-radius:2px;padding:7px 10px;color:#d3dfed;letter-spacing:.08em;font-size:9px}
+.card{border:1px solid #e3e5e8;border-radius:10px;box-shadow:none;background:#fff;margin-bottom:15px;padding:23px}
+.card:hover{box-shadow:none;transform:none;border-color:#cbd4e3}
+.stat{font-size:31px;font-weight:750;letter-spacing:-1.35px;color:#142b4b}
+.title{font-size:30px;font-weight:760;letter-spacing:-1.25px}
+.sub{color:var(--muted);font-size:12.5px;line-height:1.64}
+.primary{background:#1d53bb;border-radius:6px;font-weight:700;font-size:12.5px;letter-spacing:.02em;padding:12px 18px}
+.primary:hover{background:#17469f}
+.ghost{background:#eef2f8;color:#1b4d9a;border:1px solid #e1e8f3;border-radius:6px;font-size:12.5px;padding:11px 17px}
+.ghost:hover{background:#e4ecf8}
+button:hover{transform:none}
+.profile-strip{background:transparent;border:0;border-bottom:1px solid #dddfe2;border-radius:0;padding:0 1px 18px;margin:0 0 24px}
+.profile-strip strong{color:#243750;font-size:13px}
+.ready-summary{background:#fff;border:1px solid #e2e5e7;border-radius:9px;padding:15px 19px}
+.ready-summary strong{color:#243e63}
+.grid{gap:13px}.analytics-layout{gap:13px}
+#inicio>.grid>.card{border-top:2px solid #1e4eaa;padding-top:20px}
+#inicio>.grid .sub:last-child{font-size:11px}
+.metric{background:#142640;border-radius:9px}
+.scenario-card,.reco-choice{background:#fff;border-color:#e0e4e8;border-radius:9px}
+.reco-choice.selected{background:#f2f6fd;border-color:#315da8}
+.pill{background:#ebeff6;color:#345880;border-radius:4px;font-size:10px}
+.tag{background:#e7f2ec;color:#237251;border-radius:4px;font-size:10px}
+.label{color:#48596f;font-size:12px}
+input,textarea,select{border:1px solid #cfd6df;border-radius:6px;color:#243650}
+input:focus,textarea:focus,select:focus{border-color:#4072d0}
+.flow{border-radius:8px;border-left-width:3px}
+.action-item{border-radius:7px;background:#f8f9fa}
+.guard-alert,.warning{border-radius:7px}
+.bar>div,.readiness-fill,.scenario-track>div,.mini-chart .bar-col span{background:#3163ba}
+.mini-chart .bar-col span{border-radius:3px 3px 0 0}
+footer{font-size:11px;color:#7b8693}
+@media(max-width:750px){header{padding:15px 16px 0}header>div{flex-wrap:wrap}header nav{margin-top:12px}nav button{padding:12px 13px}.hero{padding:28px 25px;min-height:auto}.hero:before{right:24px;top:22px;font-size:9px}.hero h2{font-size:34px;letter-spacing:-1.4px}main{padding-top:21px}.card{padding:18px}.profile-strip{margin-bottom:18px}}
