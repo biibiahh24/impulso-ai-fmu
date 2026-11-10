@@ -2,6 +2,62 @@
 function updateReadiness(){const dims=[['Dados','dados'],['Equipe','equipe'],['Integração','integracao'],['Segurança','seguranca']];$('readinessBreakdown').innerHTML=dims.map(([label,id])=>{let p=Number($(id).value)*5;return '<div class="readiness-row"><div class="readiness-head"><span>'+label+'</span><span>'+p+'%</span></div><div class="readiness-track"><div class="readiness-fill" style="width:'+p+'%"></div></div></div>'}).join('')}
 ['dados','equipe','integracao','seguranca'].forEach(id=>$(id).addEventListener('change',updateReadiness));updateReadiness();
 function updateVisuals(benefit,cost,net){const max=Math.max(benefit,cost,Math.max(0,net),1),scale=n=>Math.max(2,Math.round(Math.max(0,n)/max*100));[['Benefit',benefit],['Cost',cost],['Net',net]].forEach(([id,value])=>{$('dash'+id).textContent=fmt(value);$('dash'+id+'Bar').style.height=scale(value)+'%'});$('roiVisual').innerHTML=[['Capacidade econômica potencial',benefit,''],['Custo de contratação',cost,'cost'],['Saldo econômico projetado',net,'']].map(([label,value,cls])=>'<div class="scenario-item '+cls+'"><div><span>'+label+'</span><strong>'+fmt(value)+'</strong></div><div class="scenario-track"><div style="width:'+scale(value)+'%"></div></div></div>').join('');$('roiInterpretation').textContent=net>0?'Cenário positivo apenas sob as premissas inseridas; não equivale a lucro ou economia comprovada.':net<0?'Com estas premissas, os custos excedem o benefício econômico potencial.':'Com estas premissas, benefícios e custos estimados são equivalentes.'}
+
+/* Validação operacional — o MVP nunca aprova projeções inconsistentes. */
+const formLimits={
+ vol:[1,100000,'Solicitações por dia'],pessoas:[1,100000,'Funcionários'],dias:[1,31,'Dias úteis por mês'],
+ minutos:[0,480,'Minutos por pessoa/dia'],minutosPorCaso:[0,480,'Minutos poupados por solicitação'],
+ hora:[0,1000000,'Custo-hora'],mensal:[0,100000000,'Mensalidade'],implantacao:[0,100000000,'Implantação'],
+ extras:[0,100000000,'Custos extras'],realizacao:[0,100,'Aproveitamento econômico'],
+ economiaCaixa:[0,100000000,'Economia anual em caixa'],
+ pilotTempoAtual:[0.1,600,'Tempo atual por solicitação'],pilotTempoMeta:[0.1,600,'Meta de tempo por solicitação'],
+ pilotErroAtual:[0,100,'Retrabalho atual'],pilotErroMeta:[0,100,'Meta de retrabalho'],pilotDias:[1,180,'Dias úteis de piloto']
+};
+function validateScenario(showErrors=false){
+ const errors=[],invalid=new Set();
+ const add=(id,msg)=>{errors.push(msg);invalid.add(id)};
+ if(!$('empresaNome').value.trim())add('empresaNome','Informe o nome da empresa.');
+ if(!$('proc').value.trim())add('proc','Informe o processo avaliado.');
+ if(!$('desc').value.trim())add('desc','Descreva a atividade avaliada.');
+ for(const [id,[lo,hi,label]] of Object.entries(formLimits)){
+  const raw=$(id).value.trim(),n=Number(raw);
+  if(!raw||!Number.isFinite(n)||n<lo||n>hi)add(id,label+': informe um valor entre '+lo+' e '+hi+'.');
+ }
+ const people=Number($('pessoas').value),volume=Number($('vol').value),
+ perCase=Number($('minutosPorCaso').value),manual=Number($('minutos').value);
+ const perPerson=$('metodoTempo').value==='volume'&&people>0?volume*perCase/people:manual;
+ if(Number.isFinite(perPerson)&&perPerson>480)add($('metodoTempo').value==='volume'?'minutosPorCaso':'minutos','O tempo poupado excede 8 horas por pessoa/dia. Reduza o volume, o tempo por caso ou revise a equipe.');
+ if(Number($('pilotTempoMeta').value)>Number($('pilotTempoAtual').value))add('pilotTempoMeta','A meta do piloto deve ser menor ou igual ao tempo atual.');
+ if(Number($('pilotErroMeta').value)>Number($('pilotErroAtual').value))add('pilotErroMeta','A meta de retrabalho deve ser menor ou igual à taxa atual.');
+ const annualCost=Number($('mensal').value)*12+Number($('implantacao').value)+Number($('extras').value);
+ if(Number.isFinite(annualCost)&&annualCost<=0)add('mensal','Informe pelo menos um custo de implantação ou operação. Sem custo não é possível calcular ROI.');
+ if(showErrors){
+  Object.keys(formLimits).concat(['empresaNome','proc','desc']).forEach(id=>$(id).setAttribute('aria-invalid',invalid.has(id)?'true':'false'));
+  const html=errors.length?'<strong>Confira os dados antes de continuar:</strong><ul>'+errors.map(v=>'<li>'+safe(v)+'</li>').join('')+'</ul>':'';
+  $('diagnosticValidation').innerHTML=html;$('roiValidation').innerHTML=html;
+ }
+ return {ok:!errors.length,errors};
+}
+function updateDashboard(){
+ const score=Number($('score').textContent)||0;
+ const valid=validateScenario(false);
+ $('dashReadiness').textContent=diagnosisDone?score+'/100':'Não avaliada';
+ $('dashReadinessDetail').textContent=diagnosisDone?(blocked?'Dados ou segurança insuficientes':'Diagnóstico registrado'):'Clique em Analisar prontidão';
+ $('dashDecision').textContent=approvalState==='approved'?'Aprovada':approvalState==='review'?'Em revisão':blocked&&diagnosisDone?'Bloqueada':'Pendente';
+ $('dashDecisionDetail').textContent=approvalState==='approved'?'Aprovação somente demonstrativa':approvalState==='review'?'Necessita nova avaliação':'Nenhuma implementação ativada';
+ const days=Number($('dias').value)||0,vol=Number($('vol').value)||0;
+ $('dashVolume').textContent=(days*vol).toLocaleString('pt-BR');
+ $('dashVolumeDetail').textContent=vol.toLocaleString('pt-BR')+' casos/dia × '+days+' dias';
+ $('dashChecks').textContent=!valid.ok?'Revisar dados':blocked?'Controles pendentes':diagnosisDone?'Verificados':'Em preparação';
+ $('dashChecksDetail').textContent=!valid.ok?valid.errors[0]:blocked?'O diagnóstico não permite prosseguir':'Valores e premissas do cenário';
+}
+function renderPilot(){
+ const volume=num('vol'),days=num('pilotDias'),current=num('pilotTempoAtual'),target=num('pilotTempoMeta'),
+ oldError=num('pilotErroAtual'),newError=num('pilotErroMeta'),total=volume*days;
+ const timeSaved=total*Math.max(0,current-target)/60;
+ $('pilotResults').innerHTML='<div class="pilot-results-grid"><div><span>Solicitações estimadas no piloto</span><strong>'+total.toLocaleString('pt-BR')+'</strong></div><div><span>Horas que se pretende liberar</span><strong>'+timeSaved.toLocaleString('pt-BR',{maximumFractionDigits:1})+' h</strong></div><div><span>Meta de redução no tempo</span><strong>'+(current>0?((current-target)/current*100):0).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%</strong></div><div><span>Meta de redução no retrabalho</span><strong>'+Math.max(0,oldError-newError).toLocaleString('pt-BR',{maximumFractionDigits:1})+' p.p.</strong></div></div><p class="small-note">Metas hipotéticas. Não correspondem a produtividade ou qualidade medidas.</p>';
+}
+
 function effectiveMinutesPerEmployee(){
  const auto=$('metodoTempo').value==='volume';
  $('minutos').readOnly=auto;
@@ -19,8 +75,8 @@ function renderProcessMetrics(hours,days,employees){
 }
 function syncTimeMode(){effectiveMinutesPerEmployee();calc()}
 $('metodoTempo').addEventListener('change',syncTimeMode);
-function calc(){let employees=num('pessoas'),mins=effectiveMinutesPerEmployee(),hour=num('hora'),days=num('dias'),monthly=num('mensal'),setup=num('implantacao'),extra=num('extras'),real=Math.min(100,num('realizacao'))/100,hours=employees*mins*days/60,yearBenefit=hours*hour*12*real,yearCost=monthly*12+setup+extra,net=yearBenefit-yearCost,roi=yearCost>0?100*net/yearCost:null,margin=hours*hour*real-monthly-extra/12,payback=margin>0?setup/margin:null;$('solicitacoesMes').textContent=(num('vol')*days).toLocaleString('pt-BR');$('minutosCasoResumo').textContent=effectiveMinutesPerCase(employees).toLocaleString('pt-BR',{maximumFractionDigits:2})+' min';renderProcessMetrics(hours,days,employees);$('horasR').textContent=hours.toLocaleString('pt-BR',{maximumFractionDigits:1})+' h';$('beneficioR').textContent=fmt(yearBenefit);$('custoR').textContent=fmt(yearCost);$('liquidoR').textContent=fmt(net);$('roiResult').textContent=roi===null?'Indefinido':roi.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';$('paybackR').textContent=payback===null?'Não atingido':payback===0?'Imediato':payback.toLocaleString('pt-BR',{maximumFractionDigits:1})+' meses';$('kvalue').textContent=fmt(hours*hour);$('kroi').textContent=roi===null?'—':roi.toLocaleString('pt-BR',{maximumFractionDigits:0})+'%';$('sensibilidade').innerHTML=[25,50,75,100].map(p=>{const r=yearCost>0?100*(hours*hour*12*p/100-yearCost)/yearCost:null;return '<div class="line"><span>'+p+'% de realização</span><strong>'+(r===null?'—':r.toLocaleString('pt-BR',{maximumFractionDigits:1})+'% de ROI')+'</strong></div>'}).join('');updateVisuals(yearBenefit,yearCost,net);if(typeof renderScenarios==='function')renderScenarios(employees,mins,hour,days,yearCost);return {employees,mins,hour,days,monthly,setup,extra,real,yearBenefit,yearCost,net,roi,payback}}
-['pessoas','minutos','hora','dias','mensal','implantacao','extras','realizacao','minutosPorCaso','metodoTempo','vol'].forEach(id=>$(id).addEventListener('input',calc));$('reset').addEventListener('click',()=>{Object.entries({pessoas:10,minutos:15,minutosPorCaso:3.75,metodoTempo:'volume',hora:30,dias:22,mensal:600,implantacao:1800,extras:0,realizacao:100}).forEach(([k,v])=>$(k).value=v);syncTimeMode();calc()});
+function calc(){let employees=num('pessoas'),mins=effectiveMinutesPerEmployee(),hour=num('hora'),days=num('dias'),monthly=num('mensal'),setup=num('implantacao'),extra=num('extras'),real=Math.min(100,num('realizacao'))/100,hours=employees*mins*days/60,yearBenefit=hours*hour*12*real,yearCost=monthly*12+setup+extra,net=yearBenefit-yearCost,roi=yearCost>0?100*net/yearCost:null,margin=hours*hour*real-monthly-extra/12,payback=margin>0?setup/margin:null,cash=num('economiaCaixa'),cashNet=cash-yearCost,cashROI=yearCost>0?100*cashNet/yearCost:null;$('solicitacoesMes').textContent=(num('vol')*days).toLocaleString('pt-BR');$('minutosCasoResumo').textContent=effectiveMinutesPerCase(employees).toLocaleString('pt-BR',{maximumFractionDigits:2})+' min';renderProcessMetrics(hours,days,employees);$('capacityValue').textContent=fmt(yearBenefit);$('cashValue').textContent=fmt(cash);$('cashNet').textContent=fmt(cashNet);$('horasR').textContent=hours.toLocaleString('pt-BR',{maximumFractionDigits:1})+' h';$('beneficioR').textContent=fmt(yearBenefit);$('custoR').textContent=fmt(yearCost);$('liquidoR').textContent=fmt(net);$('roiResult').textContent=roi===null?'Indefinido':roi.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';$('paybackR').textContent=payback===null?'Não atingido':payback===0?'Imediato':payback.toLocaleString('pt-BR',{maximumFractionDigits:1})+' meses';$('kvalue').textContent=fmt(hours*hour);$('kroi').textContent=roi===null?'—':roi.toLocaleString('pt-BR',{maximumFractionDigits:0})+'%';$('sensibilidade').innerHTML=[25,50,75,100].map(p=>{const r=yearCost>0?100*(hours*hour*12*p/100-yearCost)/yearCost:null;return '<div class="line"><span>'+p+'% de realização</span><strong>'+(r===null?'—':r.toLocaleString('pt-BR',{maximumFractionDigits:1})+'% de ROI')+'</strong></div>'}).join('');updateVisuals(yearBenefit,yearCost,net);if(typeof renderScenarios==='function')renderScenarios(employees,mins,hour,days,yearCost);renderPilot();const valid=validateScenario(false).ok;if(!valid){['roiResult','kroi','beneficioR','liquidoR','paybackR','capacityValue','cashNet'].forEach(id=>$(id).textContent='—');$('roiInterpretation').textContent='Existem valores inválidos. Corrija os campos para calcular um retorno confiável.';}updateDashboard();return {employees,mins,hour,days,monthly,setup,extra,real,yearBenefit,yearCost,net,roi,payback,cash,cashNet,cashROI,valid}}
+['pessoas','minutos','hora','dias','mensal','implantacao','extras','realizacao','economiaCaixa','minutosPorCaso','metodoTempo','vol','pilotTempoAtual','pilotTempoMeta','pilotErroAtual','pilotErroMeta','pilotDias'].forEach(id=>$(id).addEventListener('input',()=>{calc();if($('roiValidation').textContent)validateScenario(true)}));$('reset').addEventListener('click',()=>{Object.entries({pessoas:10,minutos:15,minutosPorCaso:3.75,metodoTempo:'volume',hora:30,dias:22,mensal:600,implantacao:1800,extras:0,realizacao:100,economiaCaixa:0,pilotTempoAtual:10,pilotTempoMeta:6,pilotErroAtual:15,pilotErroMeta:7,pilotDias:20}).forEach(([k,v])=>$(k).value=v);syncTimeMode();calc()});
 function recs(){const r=[[currentProcess,'Alta','Classificação e encaminhamento de solicitações com revisão humana.','Precisão da triagem; validação de exceções'],['Pesquisa de documentos','Média','Respostas apoiadas em documentos e referências, com controle de acesso.','Atualidade das fontes e permissões'],['Acompanhamento comercial','Média','Registro e lembretes de contatos pendentes.','Integração com CRM e privacidade']];$('recitems').innerHTML=r.map(x=>'<div class="card"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><h3 style="margin:0"></h3><span class="tag">'+x[1]+' prioridade</span></div><p class="sub">'+x[2]+'</p><div class="line"><span>Risco / supervisão</span><strong>'+x[3]+'</strong></div><button class="ghost" data-go="jornada">Avaliar fluxo →</button></div>').join('');$('recitems').querySelectorAll('.card').forEach((el,i)=>{el.querySelector('h3').textContent=r[i][0]});document.querySelectorAll('#recitems [data-go]').forEach(b=>b.onclick=()=>show('jornada'))}
 $('analisar').addEventListener('click',()=>{currentProcess=$('proc').value.trim()||'Processo sem título';diagnostic();recs();$('status').textContent='Aguardando decisão após diagnóstico';$('status').style.color='';show('recomendacoes')});
 const stages=[['Cadastro do processo','Humano · Processos registrados'],['Diagnóstico de prontidão','Regras · Qualidade de dados, equipe e segurança'],['Recomendações de automação','IA conceitual · Relevância das sugestões'],['Simulação de custos e ROI','Cálculo determinístico · ROI e payback'],['Decisão de aprovação ou revisão','Humano · Taxa de aprovação'],['Validação da automação simulada','Humano · Testes aprovados'],['Acompanhamento de resultados','Indicadores · Tempo, custo, qualidade e adoção']];$('flow').innerHTML=stages.map((x,i)=>'<div class="flow"><strong>'+(i+1)+'. '+x[0]+'</strong><p>'+x[1]+'</p></div>'+(i<stages.length-1?'<div class="arrow">↓</div>':'')).join('');$('aprovar').onclick=()=>$('status').textContent='Simulação aprovada pelo gestor.';$('revisar').onclick=()=>$('status').textContent='Revisão solicitada; voltar às recomendações.';
@@ -46,6 +102,7 @@ function updateWorkflow(){
  $('workflowNext').textContent=next===-1?'Ver relatório →':'Continuar: '+workflowStages[next][0]+' →';
  $('workflowNext').onclick=()=>show(destination);
  $('workflowLastAction').textContent=approvalState==='approved'?'Aprovação simulada registrada; a implementação real não foi autorizada.':approvalState==='review'?'Revisão solicitada; nenhuma implementação foi autorizada.':diagnosisDone?'Diagnóstico preparado; decisões e métricas são apenas demonstrativas.':'Nenhum processo real foi implementado.';
+ updateDashboard();
 }
 function invalidateDecision(){approvalState='none';reportVisited=false;$('status').textContent='Dados alterados: é necessária uma nova aprovação.';$('status').style.color='';updateWorkflow();}
 function showContext(){const c=context();currentProcess=c.process;$('profileLabel').textContent=c.name+' · '+c.sector;$('profileSubtitle').textContent=c.size+' · objetivo: '+c.goal+' · '+c.process;$('dashboardContext').textContent='Empresa: '+c.name+' · '+c.size+' · '+c.sector;$('dashboardOpportunity').textContent='Oportunidade em análise: '+selectedOpportunity;$('dashboardProcess').textContent=c.process;$('kprocess').textContent='1';$('recommendationContext').textContent='Contexto: '+c.sector+' · '+c.goal+'. As alternativas abaixo são hipóteses de automação, não recomendações produzidas por IA real.';$('scenarioContext').textContent='Simulando o processo “'+c.process+'” para '+c.name+'. Os valores financeiros são premissas editáveis, não custos observados.';recs();renderCompare();updateWorkflow()}
