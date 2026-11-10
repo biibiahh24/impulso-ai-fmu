@@ -3,7 +3,7 @@
 
 Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a partir da pesquisa realizada durante o AI Brasil Experience 2026.
 
-> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório contém os três entregáveis, inclusive o PDF final de 8 slides. A autenticação da submissão ao LXP e a verificação independente das evidências originais de entrevistas continuam pendentes.
+> **ENTREGA FMU:** O repositório contém os três entregáveis, inclusive o PDF final de 8 slides. A autenticação da submissão ao LXP e a verificação independente das evidências originais de entrevistas continuam pendentes.
 
 ## Acesso
 - **Protótipo:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app
