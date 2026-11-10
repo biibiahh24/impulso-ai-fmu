@@ -1,4 +1,4 @@
-# IMPULSO AI
+# IMPULSO AI 
 **Da intenção à implementação.**
 
 Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a partir da pesquisa realizada durante o AI Brasil Experience 2026.
