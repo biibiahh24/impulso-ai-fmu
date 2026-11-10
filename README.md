@@ -3,12 +3,12 @@
 
 Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a partir da pesquisa realizada durante o AI Brasil Experience 2026.
 
-> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório já contém os três artefatos em `entregaveis/`, mas a conferência de evidências e o envio do link ao LXP ainda são necessários.
+> **ENTREGA FMU:** [Ver checklist oficial, três entregáveis e pendências antes do LXP](ENTREGA-FMU.md). O repositório contém os três entregáveis, inclusive o PDF final de 8 slides. A autenticação da submissão ao LXP e a verificação independente das evidências originais de entrevistas continuam pendentes.
 
 ## Acesso
 - **Protótipo:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app
-- **Apresentação editável no Canva (8 slides):** https://www.canva.com/d/aij3bnHcRKTj5HQ
-- **Apresentação de oito slides depositada no GitHub:** [entregaveis/03-business-case.html](entregaveis/03-business-case.html)
+- **Apresentação editável no Canva (8 slides):** https://www.canva.com/d/PmQUy3TtZ3-H3g7
+- **Apresentação oficial final (PDF, 8 slides):** [Business Case FMU — PDF](entregaveis/IMPULSO%20AI%20%E2%80%94%20Business%20Case%20FMU%20%20Miss%C3%A3o%20%20(1).pdf) (20,7 MB; download recomendado, pois o GitHub pode não exibir prévia de PDFs grandes).\n- **Apresentação alternativa em HTML:** [entregaveis/03-business-case.html](entregaveis/03-business-case.html)
 - **Roteiro de apresentação oral:** [docs/roteiro-apresentacao.md](docs/roteiro-apresentacao.md)
 - **Repositório:** https://github.com/biibiahh24/impulso-ai-fmu
 
@@ -46,7 +46,7 @@ Os pontos relacionados a Cilia e Leavo AI não devem ser apresentados como cita�
 - `index.html` — demonstração interativa.
 - `entregaveis/01-relatorio-mvp.html` — relatório completo formatado para salvar como PDF.
 - `entregaveis/02-fluxograma.svg` — fluxograma visual da jornada, com decisões humanas e KPIs.
-- **Canva** — apresentação de oito slides editável pelo link acima (exportar PDF final para a pasta do repositório antes da entrega).
+- **Apresentação final em PDF** — arquivo de oito slides já disponibilizado na pasta `entregaveis/`, ver link acima. O slide 7 contém captura do ROI hipotético de 120%, coerente com o texto.
 - `docs/matriz-comparativa.md` — síntese de pesquisa.
 - `docs/mvp-e-viabilidade.md` — problema, produto, modelo de negócio e cenário financeiro.
 - `docs/jornada.md` — fluxograma Mermaid com decisões humanas.
