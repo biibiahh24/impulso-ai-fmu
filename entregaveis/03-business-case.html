@@ -40,5 +40,15 @@ footer{max-width:1440px;margin:auto;padding:0 20px 28px;font-size:11px;color:#99
 <p class="note"><strong>Apresentação sincronizada com o arquivo final:</strong> as capturas atuais do protótipo nos slides 5, 6 e 7, incluindo o ROI econômico hipotético de <strong>120%</strong>, são exatamente as imagens exportadas do Canva. Caso o navegador não exiba o PDF incorporado, clique em <strong>Abrir PDF oficial</strong> e utilize o arquivo original.</p>
 </main>
 <footer>Grupo: Beatriz Ramos — RA 2025116740 · Nicole Santos Damaceno — RA 2025102325 · Victoria Maria de Carvalho Franca — RA 2025102342 · Kauã da Silva Viturino — RA 2025102893.<br>Os números de ROI são premissas acadêmicas, não ganhos reais medidos.</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(()=>{const canvas=document.getElementById('pageCanvas'),msg=document.getElementById('loadingSlides'),prev=document.getElementById('prevSlide'),next=document.getElementById('nextSlide'),indicator=document.getElementById('slideNumber');let pdf,n=1,rendering=false;
+const fail=()=>{msg.textContent='Prévia indisponível neste navegador. Clique em Abrir PDF oficial acima.';msg.style.display='block'};
+async function render(){if(!pdf||rendering)return;rendering=true;try{const page=await pdf.getPage(n),base=page.getViewport({scale:1}),scale=Math.min(2,window.devicePixelRatio||1)*Math.min(1200,document.querySelector('.viewer').clientWidth-30)/base.width,v=page.getViewport({scale});canvas.width=v.width;canvas.height=v.height;await page.render({canvasContext:canvas.getContext('2d'),viewport:v}).promise;canvas.style.display='block';msg.style.display='none';indicator.textContent=n+' / '+pdf.numPages;prev.disabled=n===1;next.disabled=n===pdf.numPages;}catch(e){fail();console.error(e)}finally{rendering=false}}
+prev.onclick=()=>{if(pdf&&n>1){n--;render()}};next.onclick=()=>{if(pdf&&n<pdf.numPages){n++;render()}};
+if(!window.pdfjsLib){fail();return}
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';pdfjsLib.getDocument({url:"IMPULSO%20AI%20%E2%80%94%20Business%20Case%20FMU%20%20Miss%C3%A3o%20%20(1).pdf"}).promise.then(doc=>{pdf=doc;render()}).catch(fail);
+})();
+</script>
 </body>
 </html>
