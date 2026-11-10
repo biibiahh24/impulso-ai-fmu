@@ -12,9 +12,9 @@
 |---|---|---|---|
 | 1 | MVP conceitual — produto/serviço estratégico | [01-relatorio-mvp.html](entregaveis/01-relatorio-mvp.html) e [código do MVP](index.html) | [Relatório](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/01-relatorio-mvp.html) / [Protótipo](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/) |
 | 2 | Fluxograma da jornada com IA, decisões e métricas | [02-fluxograma.svg](entregaveis/02-fluxograma.svg) e [Mermaid](docs/jornada.md) | [Fluxograma](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/02-fluxograma.svg) |
-| 3 | Apresentação executiva — 8 slides, ~5 min | [03-business-case.html](entregaveis/03-business-case.html), [roteiro](docs/business-case.md) | [Versão do GitHub](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/03-business-case.html) / [Canva editável](https://www.canva.com/d/aij3bnHcRKTj5HQ) |
+| 3 | Apresentação executiva — 8 slides, ~5 min | [PDF oficial de 8 slides](entregaveis/IMPULSO%20AI%20%E2%80%94%20Business%20Case%20FMU%20%20Miss%C3%A3o%20%20(1).pdf), [03-business-case.html](entregaveis/03-business-case.html) e [roteiro](docs/business-case.md) | [Versão do GitHub](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/03-business-case.html) / [Canva editável](https://www.canva.com/d/aij3bnHcRKTj5HQ) |
 
-**A versão editável do Canva está vinculada, mas não está incorporada ao GitHub como arquivo Canva nativo.** Antes de submeter, recomenda-se exportar o PDF ou PPTX do Canva e colocar uma cópia em `entregaveis/`, mantendo a apresentação HTML já presente como terceira entrega autossuficiente.
+**PDF oficial já enviado e conferido:** 8 páginas, quatro nomes/RAs, link clicável do protótipo e ROI econômico hipotético de 120% compatível com o print. O GitHub pode não renderizar a prévia de um PDF de 20,7 MB; o arquivo está íntegro. A versão HTML é alternativa complementar.
 
 ## Matriz comparativa — requisito 3.3
 
@@ -76,8 +76,8 @@ Referência para a apresentação oral: [roteiro de fala](docs/roteiro-apresenta
 
 1. [x] **Identificar os quatro integrantes nos artefatos e na documentação**: README, relatório, fluxograma, versão HTML da apresentação e roteiros. A capa do Canva deve ser confirmada após atualização.
 2. [ ] **Validar os registros originais das seis visitas/entrevistas**. A matriz e o relatório já contêm pesquisa secundária oficial com URL e ressalvas para dados que não são entrevistas. Inserir fotos/anotações autorizadas quando disponíveis e não atribuir pesquisa de site ao entrevistado. Não publicar dados pessoais de terceiros sem autorização.
-3. [ ] **Exportar o Canva** para PDF/PPTX e adicioná-lo ao repositório para preservar a versão final projetada. A versão HTML de oito slides já está no GitHub, portanto este item reforça consistência e disponibilidade.
-4. [ ] **Ensaiar e realizar apresentação oral obrigatória** (~5 minutos por grupo).
+3. [x] **Apresentação final do Canva exportada para PDF e incluída no repositório** (8 páginas; conteúdo verificado).
+4. [x] **Ensaio oral informado como concluído pelo grupo** (~5 minutos). **A apresentação oficial ainda deverá ocorrer em 12/11/2026**, sob o Prof. Eugenio Akihiro Nassu.
 5. [ ] **Enviar o link do repositório público no espaço próprio do LXP até 11/11/2026** — isso não acontece automaticamente com a publicação no GitHub.
 
 ## Link que será enviado ao LXP
@@ -93,4 +93,4 @@ https://github.com/biibiahh24/impulso-ai-fmu
 - Abrir o fluxograma e a apresentação em janela anônima.
 - Conferir se o GitHub permanece público durante toda a avaliação.
 
-**Status:** pacote organizado com os três entregáveis. A submissão oficial só deve ser considerada concluída após os itens pendentes, principalmente conferência final do Canva e envio no LXP.
+**Status da auditoria (09/11/2026):** os três entregáveis, o PDF final, os nomes/RAs e os links públicos foram verificados. **Ainda não há confirmação externa de que o link foi submetido no LXP; é obrigatório até 11/11/2026.** O edital prevê grupos de 3, enquanto esta equipe tem 4 — confirmar a exceção com o professor. A participação presencial nos dois dias e a autenticidade dos seis registros originais não puderam ser auditadas independentemente.
