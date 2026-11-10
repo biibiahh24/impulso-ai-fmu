@@ -1,0 +1,5 @@
+# Considerar os arquivos originais do IMPULSO AI nas estatisticas de linguagem do GitHub.
+# Algumas linhas longas podem ser classificadas como codigo gerado pelo Linguist.
+/js/app.js linguist-language=JavaScript -linguist-generated -linguist-vendored -linguist-documentation
+/css/style.css linguist-language=CSS -linguist-generated -linguist-vendored -linguist-documentation
+*.html linguist-language=HTML
