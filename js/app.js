@@ -81,7 +81,7 @@ function recs(){const r=[[currentProcess,'Alta','Classificação e encaminhament
 $('analisar').addEventListener('click',()=>{currentProcess=$('proc').value.trim()||'Processo sem título';diagnostic();recs();$('status').textContent='Aguardando decisão após diagnóstico';$('status').style.color='';show('recomendacoes')});
 const stages=[['Cadastro do processo','Humano · Processos registrados'],['Diagnóstico de prontidão','Regras · Qualidade de dados, equipe e segurança'],['Recomendações de automação','IA conceitual · Relevância das sugestões'],['Simulação de custos e ROI','Cálculo determinístico · ROI e payback'],['Decisão de aprovação ou revisão','Humano · Taxa de aprovação'],['Validação da automação simulada','Humano · Testes aprovados'],['Acompanhamento de resultados','Indicadores · Tempo, custo, qualidade e adoção']];$('flow').innerHTML=stages.map((x,i)=>'<div class="flow"><strong>'+(i+1)+'. '+x[0]+'</strong><p>'+x[1]+'</p></div>'+(i<stages.length-1?'<div class="arrow">↓</div>':'')).join('');$('aprovar').onclick=()=>$('status').textContent='Simulação aprovada pelo gestor.';$('revisar').onclick=()=>$('status').textContent='Revisão solicitada; voltar às recomendações.';
 const companies=[['WebGlobal / AiProtus','Robôs interativos para recepção e eventos','Logística, dados e consentimento','Pré-venda e aluguel para eventos; preço público não identificado'],['Aditum','Agentes inteligentes para testes e processos de pagamento','Adesão de equipes e prioridades','Ganhos operacionais relatados'],['Digibee','Plataforma low-code de integração empresarial','Sistemas legados, backlog e governança','TEI 2022: ROI 232% para organização composta de integração; não é ROI de IA'],['Cilia','IA em imagens de danos e orçamentos de sinistros','Precisão e revisão humana (riscos analisados pela equipe)','Preço padrão e ROI típicos não confirmados; veja pesquisa complementar'],['HugLabs','Pesquisa, busca e classificação documental','Adaptação à estrutura do cliente','Entrevista cita cerca de 6 meses de implantação; não é prazo de ROI'],['Leavo AI','Agentes para atendimento e vendas em WhatsApp/CRM','Dados, volume, integração e privacidade (riscos de análise)','Plano Personal publicado a partir de R$ 397/mês; custos extras variáveis']];$('companies').innerHTML=companies.map(c=>'<article class="card company"><h3 style="margin-top:0"></h3><p class="sub"><b>Aplicação:</b> '+c[1]+'</p><p class="sub"><b>Desafios:</b> '+c[2]+'</p><p class="sub"><b>Economia:</b> '+c[3]+'</p></article>').join('');$('companies').querySelectorAll('h3').forEach((e,i)=>e.textContent=companies[i][0]);
-$('exportar').onclick=()=>{const r=calc(),text='IMPULSO AI — CENÁRIO ACADÊMICO\nFuncionários: '+r.employees+'\nMinutos/dia: '+r.mins+'\nCusto/hora: '+fmt(r.hour)+'\nInvestimento anual: '+fmt(r.yearCost)+'\nBenefício econômico anual: '+fmt(r.yearBenefit)+'\nROI potencial: '+(r.roi===null?'Indefinido':r.roi.toFixed(1)+'%')+'\nValores hipotéticos; sem validação empírica.\n';const b=new Blob([text],{type:'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='impulso-ai-roi.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};recs();calc();
+$('exportar').onclick=()=>{const r=calc(),text='IMPULSO AI — CENÁRIO ACADÊMICO\nFuncionários: '+r.employees+'\nMinutos/dia: '+r.mins+'\nCusto/hora: '+fmt(r.hour)+'\nInvestimento anual: '+fmt(r.yearCost)+'\nBenefício econômico anual: '+fmt(r.yearBenefit)+'\nROI potencial: '+(r.roi===null?'Indefinido':r.roi.toFixed(1)+'%')+'\nValores hipotéticos; sem validação empírica.\n';const b=new Blob([text],{type:'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='impulso-ai-roi.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};recs();
 
 const context=()=>({name:($('empresaNome').value||'Empresa sem nome').trim().slice(0,80),sector:$('empresaSetor').value,size:$('empresaPorte').value,goal:$('empresaObjetivo').value,process:($('proc').value||'Processo sem nome').trim().slice(0,100),description:($('desc').value||'').trim().slice(0,900),volume:num('vol')});
 const safe=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -165,7 +165,7 @@ $('printReport').onclick=()=>{buildReport();window.print()};
 $('downloadReport').onclick=()=>{const c=buildReport(),html='<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Relatório IMPULSO AI</title><style>body{font-family:Arial,sans-serif;color:#203850;line-height:1.55;max-width:850px;margin:40px auto;padding:15px}h1{color:#102743}h2{border-bottom:1px solid #d5e2ee;padding-bottom:8px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #cad8e8;padding:8px;text-align:left}.report-warning{border-left:4px solid #d2a159;background:#fff5e6;padding:15px}@media print{@page{size:A4;margin:16mm}}</style><body>'+c+'</body></html>';const b=new Blob([html],{type:'text/html;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='impulso-ai-relatorio.html';a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)};
 const originalApprove=$('aprovar').onclick;$('aprovar').onclick=()=>{diagnostic();if(blocked){$('status').textContent='Aprovação bloqueada: resolver primeiro segurança e qualidade de dados.';$('status').style.color='#aa6022'}else if(!diagnosisDone||!opportunityChosen||!simulationReviewed){$('status').textContent='Antes de aprovar, conclua o diagnóstico, selecione uma oportunidade e revise pelo menos uma premissa do ROI.';$('status').style.color='#aa6022'}else{originalApprove();$('status').style.color='#198360'}};
 $('revisar').addEventListener('click',()=>{$('decisionNote').textContent='Revise as premissas do diagnóstico e avalie novamente.'});
-renderCompare();diagnostic();buildReport();updateWorkflow();
+renderCompare();diagnostic();calc();buildReport();updateWorkflow();
 $('analisar').addEventListener('click',()=>{diagnosisDone=true;opportunityChosen=false;simulationReviewed=false;approvalState='none';reportVisited=false;updateWorkflow()});
 $('pessoas').addEventListener('input',()=>{simulationReviewed=true;invalidateDecision()});
 ['minutos','minutosPorCaso','metodoTempo','hora','dias','mensal','implantacao','extras','realizacao'].forEach(id=>$(id).addEventListener('input',()=>{simulationReviewed=true;invalidateDecision()}));
@@ -179,7 +179,7 @@ $('downloadReport').addEventListener('click',()=>{reportVisited=true;updateWorkf
 ['proc','desc','vol'].forEach(id=>$(id).addEventListener('input',()=>{showContext();diagnosisDone=false;opportunityChosen=false;simulationReviewed=false;invalidateDecision()}));
 
 const draftKey='impulso-ai-fmu-draft-v1';
-const draftIds=['empresaNome','empresaSetor','empresaPorte','empresaObjetivo','proc','desc','vol','dados','equipe','integracao','seguranca','pessoas','minutos','minutosPorCaso','metodoTempo','hora','dias','mensal','implantacao','extras','realizacao'];
+const draftIds=['empresaNome','empresaSetor','empresaPorte','empresaObjetivo','proc','desc','vol','dados','equipe','integracao','seguranca','pessoas','minutos','minutosPorCaso','metodoTempo','hora','dias','mensal','implantacao','extras','realizacao','economiaCaixa','pilotTempoAtual','pilotTempoMeta','pilotErroAtual','pilotErroMeta','pilotDias'];
 function draftMessage(message){$('draftMessage').textContent=message}
 $('saveDraft').addEventListener('click',()=>{
  try{
@@ -223,7 +223,7 @@ const businessTemplates={
  servicos:{empresaNome:'Consultoria Horizonte — exemplo',empresaSetor:'Serviços',empresaPorte:'Pequena empresa',empresaObjetivo:'Organizar dados e documentos',proc:'Pesquisa de contratos e documentos',desc:'A equipe precisa localizar informações em contratos e documentos internos antes de responder demandas.',vol:'30',dados:'20',equipe:'10',integracao:'10',seguranca:'20',pessoas:'6',minutosPorCaso:'4',metodoTempo:'volume',hora:'38',dias:'22',mensal:'650',implantacao:'2200',extras:'1000',realizacao:'50'},
  industria:{empresaNome:'Fábrica Atlas — exemplo',empresaSetor:'Indústria',empresaPorte:'Média empresa',empresaObjetivo:'Reduzir tempo de tarefas',proc:'Registro e conferência de ordens de produção',desc:'Registros e informações das ordens são conferidos manualmente antes de atualizar sistemas internos.',vol:'55',dados:'10',equipe:'20',integracao:'10',seguranca:'20',pessoas:'8',minutosPorCaso:'6',metodoTempo:'volume',hora:'34',dias:'22',mensal:'900',implantacao:'3500',extras:'1500',realizacao:'50'}
 };
-const scenarioInputs=['empresaNome','empresaSetor','empresaPorte','empresaObjetivo','proc','desc','vol','dados','equipe','integracao','seguranca','pessoas','minutos','minutosPorCaso','metodoTempo','hora','dias','mensal','implantacao','extras','realizacao'];
+const scenarioInputs=['empresaNome','empresaSetor','empresaPorte','empresaObjetivo','proc','desc','vol','dados','equipe','integracao','seguranca','pessoas','minutos','minutosPorCaso','metodoTempo','hora','dias','mensal','implantacao','extras','realizacao','economiaCaixa','pilotTempoAtual','pilotTempoMeta','pilotErroAtual','pilotErroMeta','pilotDias'];
 function invalidateWorkflowAll(){
  diagnosisDone=false;opportunityChosen=false;simulationReviewed=false;approvalState='none';reportVisited=false;
  selectedOpportunity=options[0].name;
@@ -304,5 +304,21 @@ $('compareA').addEventListener('change',renderHistoryComparison);
 $('compareB').addEventListener('change',renderHistoryComparison);
 $('clearHistory').addEventListener('click',()=>{if(!readHistory().length)return;if(window.confirm('Apagar todas as análises salvas neste navegador?')){writeHistory([]);renderHistory()}});
 renderHistory();
+
+
+/* Capture validation before any existing click handler mutates state. */
+$('analisar').addEventListener('click',event=>{
+ if(!validateScenario(true).ok){event.stopImmediatePropagation();event.preventDefault();show('diagnostico');}
+},true);
+$('aprovar').addEventListener('click',event=>{
+ if(!validateScenario(true).ok){event.stopImmediatePropagation();event.preventDefault();approvalState='none';$('status').textContent='Revise as premissas inválidas antes de aprovar.';updateWorkflow();}
+},true);
+$('saveAnalysis').addEventListener('click',event=>{
+ if(!validateScenario(true).ok){event.stopImmediatePropagation();event.preventDefault();$('saveAnalysisStatus').textContent='Corrija os valores inválidos para salvar a análise.';}
+},true);
+const financialInputs=['pessoas','minutos','minutosPorCaso','metodoTempo','vol','hora','dias','mensal','implantacao','extras','realizacao','economiaCaixa','pilotTempoAtual','pilotTempoMeta','pilotErroAtual','pilotErroMeta','pilotDias'];
+financialInputs.forEach(id=>$(id).addEventListener('input',()=>{
+ if(approvalState==='approved'){approvalState='none';$('status').textContent='Premissas alteradas. Aprovação anterior cancelada.';updateWorkflow()}
+}));
 
 })();
