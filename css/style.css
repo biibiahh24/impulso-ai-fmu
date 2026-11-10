@@ -274,3 +274,17 @@ input[aria-invalid="true"],textarea[aria-invalid="true"],select[aria-invalid="tr
  .report-chart{padding:10px}
  .report-body h2,.report-body h3,.report-chart,.report-kpi-grid,.report-bar-line,.report-warning,table tr{break-inside:avoid;page-break-inside:avoid}
 }
+
+/* Numbered A4 executive report pages in Chromium and modern print engines */
+@media print {
+ @page {
+  size:A4;
+  margin:12mm 12mm 18mm;
+  @bottom-right {
+   content:"IMPULSO AI · Página " counter(page) " de " counter(pages);
+   color:#71819a;
+   font-family:"Segoe UI",Arial,sans-serif;
+   font-size:9px;
+  }
+ }
+}
