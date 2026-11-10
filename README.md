@@ -41,8 +41,6 @@ Para testar localmente, abra `index.html` no navegador, mantendo as pastas `css/
 5. **HugLabs:** análise e classificação documental; adaptação aos processos do cliente.
 6. **Leavo AI:** agentes de atendimento e vendas integrados a WhatsApp/CRM; desafios de integração, dados, resposta e privacidade são análises técnicas plausíveis.
 
-Os pontos relacionados a Cilia e Leavo AI não devem ser apresentados como citações diretas de seus representantes. Onde não há dados financeiros, registra-se **não informado**, sem inventar indicadores.
-
 ## Conteúdo
 - `index.html` — demonstração interativa.
 - `entregaveis/01-relatorio-mvp.html` — relatório completo formatado para salvar como PDF.
