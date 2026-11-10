@@ -12,9 +12,9 @@
 |---|---|---|---|
 | 1 | MVP conceitual — produto/serviço estratégico | [01-relatorio-mvp.html](entregaveis/01-relatorio-mvp.html) e [código do MVP](index.html) | [Relatório](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/01-relatorio-mvp.html) / [Protótipo](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/) |
 | 2 | Fluxograma da jornada com IA, decisões e métricas | [02-fluxograma.svg](entregaveis/02-fluxograma.svg) e [Mermaid](docs/jornada.md) | [Fluxograma](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/02-fluxograma.svg) |
-| 3 | Apresentação executiva — 8 slides, ~5 min | [PDF oficial de 8 slides](entregaveis/IMPULSO%20AI%20%E2%80%94%20Business%20Case%20FMU%20%20Miss%C3%A3o%20%20(1).pdf), [03-business-case.html](entregaveis/03-business-case.html) e [roteiro](docs/business-case.md) | [Versão do GitHub](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/03-business-case.html) / [Canva editável](https://www.canva.com/d/aij3bnHcRKTj5HQ) |
+| 3 | Apresentação executiva — 8 slides, ~5 min | [PDF oficial de 8 slides](entregaveis/IMPULSO%20AI%20%E2%80%94%20Business%20Case%20FMU%20%20Miss%C3%A3o%20%20(1).pdf), [03-business-case.html](entregaveis/03-business-case.html) e [roteiro](docs/business-case.md) | [Versão do GitHub](https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app/entregaveis/03-business-case.html) / [Canva editável](https://www.canva.com/d/PmQUy3TtZ3-H3g7) |
 
-**PDF oficial já enviado e conferido:** 8 páginas, quatro nomes/RAs, link clicável do protótipo e ROI econômico hipotético de 120% compatível com o print. O GitHub pode não renderizar a prévia de um PDF de 20,7 MB; o arquivo está íntegro. A versão HTML é alternativa complementar.
+**PDF oficial já enviado e conferido:** 8 páginas, quatro nomes/RAs, link clicável do protótipo e ROI econômico hipotético de 120% compatível com o print. O GitHub pode não renderizar a prévia de um PDF de 20,7 MB; o arquivo está íntegro. A versão HTML agora incorpora o PDF oficial atualizado, refletindo as imagens dos slides 5, 6 e 7, sem reproduções desatualizadas.
 
 ## Matriz comparativa — requisito 3.3
 
@@ -30,7 +30,7 @@ Arquivo: [docs/matriz-comparativa.md](docs/matriz-comparativa.md), [pesquisa com
 - [x] Discussão de ROI com ressalvas.
 - [x] Discussão de habilidades profissionais.
 - [x] Complementação documental das seis empresas com links institucionais, modelos de custos, ROI, maturação, habilidades e indicadores para futura validação.
-- [ ] Conferência final dos depoimentos nos vídeos/anotações originais e inclusão das evidências autorizadas. A pesquisa pública complementa, mas **não substitui a entrevista requerida**.
+- [x] **Registros de entrevistas declarados originais pelo grupo**, coletados durante o congresso; a pesquisa pública foi separada como complementação documental. Esta confirmação foi fornecida pelos integrantes, sem autenticação independente das gravações e anotações.
 
 ## MVP conceitual — nove critérios do item 3.4.1
 
@@ -72,13 +72,13 @@ Oito slides e tempo estimado de aproximadamente cinco minutos:
 
 Referência para a apresentação oral: [roteiro de fala](docs/roteiro-apresentacao.md).
 
-## CONDIÇÕES PENDENTES — obrigatórias para entrega
+## STATUS OFICIAL — concluído, autorizado e etapas futuras
 
-1. [x] **Identificar os quatro integrantes nos artefatos e na documentação**: README, relatório, fluxograma, versão HTML da apresentação e roteiros. A capa do Canva deve ser confirmada após atualização.
-2. [ ] **Validar os registros originais das seis visitas/entrevistas**. A matriz e o relatório já contêm pesquisa secundária oficial com URL e ressalvas para dados que não são entrevistas. Inserir fotos/anotações autorizadas quando disponíveis e não atribuir pesquisa de site ao entrevistado. Não publicar dados pessoais de terceiros sem autorização.
+1. [x] **Quatro integrantes identificados** em README, relatório, fluxograma, apresentação em PDF/HTML e roteiros; nomes completos e RAs confirmados na capa final do Canva.
+2. [x] **Evidências de entrevistas confirmadas como originais pelo grupo.** A matriz e o relatório distinguem registros de campo de pesquisa secundária. A originalidade foi informada pelos integrantes, não atestada independentemente. Não publicar dados pessoais de terceiros sem autorização.
 3. [x] **Apresentação final do Canva exportada para PDF e incluída no repositório** (8 páginas; conteúdo verificado).
-4. [x] **Ensaio oral informado como concluído pelo grupo** (~5 minutos). **A apresentação oficial ainda deverá ocorrer em 12/11/2026**, sob o Prof. Eugenio Akihiro Nassu.
-5. [ ] **Enviar o link do repositório público no espaço próprio do LXP até 11/11/2026** — isso não acontece automaticamente com a publicação no GitHub.
+4. [x] **Ensaio oral concluído, conforme informado pelo grupo** (~5 minutos). A apresentação oficial ocorrerá em **12/11/2026**, sob o Prof. Eugenio Akihiro Nassu.
+5. [ ] **Envio no LXP aguardando a abertura do espaço pelo professor Eugenio**. Assim que a atividade for habilitada, um integrante deverá submeter o link público do GitHub **até 11/11/2026**.
 
 ## Link que será enviado ao LXP
 
@@ -93,4 +93,4 @@ https://github.com/biibiahh24/impulso-ai-fmu
 - Abrir o fluxograma e a apresentação em janela anônima.
 - Conferir se o GitHub permanece público durante toda a avaliação.
 
-**Status da auditoria (09/11/2026):** os três entregáveis, o PDF final, os nomes/RAs e os links públicos foram verificados. **Ainda não há confirmação externa de que o link foi submetido no LXP; é obrigatório até 11/11/2026.** O edital prevê grupos de 3, enquanto esta equipe tem 4 — confirmar a exceção com o professor. A participação presencial nos dois dias e a autenticidade dos seis registros originais não puderam ser auditadas independentemente.
+**Status final (09/11/2026):** três entregáveis e PDF definitivo presentes, nomes/RAs corretos, links públicos funcionais e Business Case HTML sincronizado com o PDF final e suas imagens atuais. **Equipe de quatro autorizada pelo professor, segundo confirmação do grupo**, apesar da regra geral do edital de três pessoas. **Registros das entrevistas informados como originais pelo grupo**, sem autenticação independente das fontes primárias. **Aguardam-se a abertura da atividade no LXP (prazo 11/11) e a apresentação oral oficial em 12/11.** A participação presencial em ambos os dias não foi verificada externamente.
