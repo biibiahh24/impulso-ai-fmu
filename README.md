@@ -111,6 +111,20 @@ Quatro melhorias funcionais de alta e média prioridade foram implementadas e es
 
 **Validação em navegador Chromium:** modelos de comércio e indústria, cálculo derivado do volume, alteração do tempo por solicitação, histórico com dois registros, comparação com variações numéricas, recuperação com progresso reiniciado, bloqueios e aprovações, relatório com três barras e quatro KPIs, download HTML e geração de PDF válido (assinatura PDF-1.4). Sem erros JavaScript identificados; testes em desktop e celular. Os resultados são **simulações acadêmicas**, não provas de ROI observado ou IA real.
 
+## IMPULSO AI 4.0 — Validação, painel decisório, ROI e acompanhamento (10/11/2026)
+
+Após a implementação de modelos prontos, histórico e relatório visual, o sistema recebeu as seguintes melhorias **efetivamente implementadas**:
+
+- **Validação consistente:** nome do projeto, processo, descrição, volume, equipe, jornada, percentuais, gastos, metas e dias úteis são validados antes de diagnosticar, aprovar, salvar histórico ou exportar resultados. Ex.: zero funcionários, jornada economizada superior a 8 h/pessoa/dia e meta pior que a referência bloqueiam a ação e exibem mensagens específicas. Não existe aprovação de simulação inválida.
+- **Dashboard dinâmico:** exibe índice de prontidão, situação da decisão humana, quantidade mensal de solicitações e situação dos controles/consistência. Todos derivam dos valores reais da sessão.
+- **Transparência do ROI:** separa **valor econômico da capacidade liberada** de uma premissa opcional de **economia comprovável em caixa**, exibindo saldo e ROI financeiro apenas de caixa; as grandezas **não são somadas automaticamente** para impedir dupla contagem. Mostra também a fração de aproveitamento da capacidade necessária para equilíbrio econômico. Esses resultados são cenários acadêmicos, não economias reais.
+- **Histórico avançado (local):** busca por empresa, processo ou nome do cenário, renomeação, exclusão, comparação e **exportação/importação JSON** com restrições de tamanho e estrutura. O histórico permanece apenas no dispositivo. Importar ou restaurar não restaura aprovações.
+- **Metas do piloto:** o usuário informa tempo de atendimento e taxa de retrabalho atuais e desejados, além do período. O protótipo calcula volume estimado, horas potencialmente liberadas e melhoria-alvo — **não** resultados medidos.
+- **Relatório executivo:** identificação do cenário, data e hora, 4 indicadores, prioridades de risco, gráfico comparativo, custos/ROI, distinção entre capacidade e caixa, metas do piloto, governança e RAs do grupo. A opção **Gerar PDF** abre a caixa de impressão para **Salvar como PDF**; o documento possui paginação A4 numerada. A exportação HTML também preserva o estilo do relatório.
+- **Governança:** alterações de premissas invalidam aprovações anteriores. O painel de progresso só avança depois de um diagnóstico realmente válido, sem múltiplos manipuladores contraditórios.
+
+**Verificações realizadas em Chromium:** cenários de serviços, comércio e indústria, dados inválidos, metas inválidas, aprovação bloqueada e aprovada, alteração pós-aprovação, ROI de caixa, break-even, relatório datado, documento A4 paginado e legível, histórico com filtro/renomeação/exportação/importação, desktop 1440 px e mobile 390 px, sem erros JavaScript e sem rolagem horizontal. Os três entregáveis da Missão 2 permanecem no repositório. **Não existem login, banco de dados ou API de IA real; trata-se de um MVP conceitual com regras auditáveis.**
+
 ## Integrantes do grupo
 - **Beatriz Ramos — RA 2025116740**
 - **Nicole Santos Damaceno — RA 2025102325**
