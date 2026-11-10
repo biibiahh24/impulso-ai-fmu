@@ -3,12 +3,13 @@
 
 Projeto acadêmico da **Missão 2 — IA Transformando Negócios**, FMU, a partir da pesquisa realizada durante o AI Brasil Experience 2026.
 
-> **ENTREGA FMU:** O repositório contém os três entregáveis, inclusive o PDF final de 8 slides. A autenticação da submissão ao LXP e a verificação independente das evidências originais de entrevistas continuam pendentes.
+> **ENTREGA FMU:** O repositório contém os três entregáveis, inclusive o PDF final de 8 slides. O professor já autorizou o grupo de quatro integrantes, conforme informado pela equipe; os registros das entrevistas foram confirmados pelo grupo como originais. O envio ao LXP aguarda a abertura da atividade pelo professor e deve ocorrer até 11/11/2026.
 
 ## Acesso
 - **Protótipo:** https://impulso-ai-fmu-oliverrbiahh10-4202.vercel.app
 - **Apresentação editável no Canva (8 slides):** https://www.canva.com/d/PmQUy3TtZ3-H3g7
-- **Apresentação oficial final (PDF, 8 slides):** [Business Case FMU — PDF](entregaveis/IMPULSO%20AI%20%E2%80%94%20Business%20Case%20FMU%20%20Miss%C3%A3o%20%20(1).pdf) (20,7 MB; download recomendado, pois o GitHub pode não exibir prévia de PDFs grandes).\n- **Apresentação alternativa em HTML:** [entregaveis/03-business-case.html](entregaveis/03-business-case.html)
+- **Apresentação oficial final (PDF, 8 slides):** [Business Case FMU — PDF](entregaveis/IMPULSO%20AI%20%E2%80%94%20Business%20Case%20FMU%20%20Miss%C3%A3o%20%20(1).pdf) (20,7 MB; download recomendado, pois o GitHub pode não exibir prévia de PDFs grandes).
+- **Visualização HTML sincronizada com o PDF final e as novas imagens do Canva:** [entregaveis/03-business-case.html](entregaveis/03-business-case.html)
 - **Roteiro de apresentação oral:** [docs/roteiro-apresentacao.md](docs/roteiro-apresentacao.md)
 - **Repositório:** https://github.com/biibiahh24/impulso-ai-fmu
 
@@ -138,4 +139,4 @@ Após a implementação de modelos prontos, histórico e relatório visual, o si
 - Digibee / Forrester TEI (2022): https://marketing.digibee.com/forrester-total-economic-impact-report-digibee-2022
 - Leavo AI: https://www.leavo.ai/
 
-Os estudos e os relatos devem ser conferidos com o material original antes da submissão final. A publicação pública de imagens, vídeos ou dados pessoais dos entrevistados requer cuidado com privacidade e autorização.
+O grupo confirmou que os registros das entrevistas são originais, coletados durante o evento; não houve autenticação independente dessas fontes primárias nesta auditoria. As informações de sites públicos permanecem identificadas como pesquisa complementar, sem atribuição indevida a representantes. A publicação de imagens, vídeos ou dados pessoais dos entrevistados requer cuidado com privacidade e autorização.
