@@ -255,17 +255,18 @@ function writeHistory(items){
  try{localStorage.setItem(historyKey,JSON.stringify(items.slice(0,12)));return true}catch(e){$('saveAnalysisStatus').textContent='Armazenamento indisponível neste navegador.';return false}
 }
 const numberLabel=(value,suffix='')=>(Number.isFinite(value)?Number(value).toLocaleString('pt-BR',{maximumFractionDigits:1}):'—')+suffix;
-function historyLabel(h){return h.fields.empresaNome+' · '+h.fields.proc}
+function historyLabel(h){return (h.label||h.fields.empresaNome)+' · '+h.fields.proc}
 function renderHistory(){
- const arr=readHistory(),list=$('historyList'),a=$('compareA'),b=$('compareB');
- if(!arr.length){list.innerHTML='<p class="history-empty">Nenhuma análise salva. Complete um diagnóstico, selecione uma oportunidade e salve seu cenário na tela de ROI.</p>'}
+ const arr=readHistory(),list=$('historyList'),a=$('compareA'),b=$('compareB'),query=$('historySearch').value.trim().toLocaleLowerCase('pt-BR'),visible=arr.filter(h=>[h.label||'',h.fields.empresaNome||'',h.fields.proc||''].join(' ').toLocaleLowerCase('pt-BR').includes(query));
+ if(!visible.length){list.innerHTML='<p class="history-empty">'+(arr.length?'Nenhuma análise corresponde à pesquisa.':'Nenhuma análise salva. Complete um diagnóstico, selecione uma oportunidade e salve seu cenário na tela de ROI.')+'</p>'}
  else{
-  list.innerHTML=arr.map(h=>'<div class="history-row"><div><b>'+safe(historyLabel(h))+'</b><small>'+safe(h.date||'')+' · Prontidão '+numberLabel(Number(h.metrics.score))+'/100 · ROI '+numberLabel(Number(h.metrics.roi),'%')+'</small></div><div class="history-row-actions"><button type="button" class="ghost" data-restore="'+safe(h.id)+'">Recuperar</button><button type="button" class="ghost" data-delete="'+safe(h.id)+'">Excluir</button></div></div>').join('');
+  list.innerHTML=visible.map(h=>'<div class="history-row"><div><b>'+safe(historyLabel(h))+'</b><small>'+safe(h.date||'')+' · Prontidão '+numberLabel(Number(h.metrics.score))+'/100 · ROI '+numberLabel(Number(h.metrics.roi),'%')+'</small></div><div class="history-row-actions"><button type="button" class="ghost" data-rename="'+safe(h.id)+'">Renomear</button><button type="button" class="ghost" data-restore="'+safe(h.id)+'">Recuperar</button><button type="button" class="ghost" data-delete="'+safe(h.id)+'">Excluir</button></div></div>').join('');
   list.querySelectorAll('[data-restore]').forEach(btn=>btn.addEventListener('click',()=>restoreHistory(btn.dataset.restore)));
+  list.querySelectorAll('[data-rename]').forEach(btn=>btn.addEventListener('click',()=>{const arr=readHistory(),item=arr.find(h=>h.id===btn.dataset.rename);if(!item)return;const name=window.prompt('Nome deste cenário (até 70 caracteres):',item.label||item.fields.empresaNome);if(name===null)return;const trimmed=name.trim().slice(0,70);if(!trimmed){$('historyFeedback').textContent='Informe um nome para o cenário.';return}item.label=trimmed;if(writeHistory(arr)){renderHistory();$('historyFeedback').textContent='Cenário renomeado.'}}));
   list.querySelectorAll('[data-delete]').forEach(btn=>btn.addEventListener('click',()=>{writeHistory(readHistory().filter(h=>h.id!==btn.dataset.delete));renderHistory()}));
  }
  const prevA=a.value,prevB=b.value;
- const opts=arr.map(h=>'<option value="'+safe(h.id)+'">'+safe(h.fields.empresaNome)+' — '+safe(h.date||'')+'</option>').join('');
+ const opts=arr.map(h=>'<option value="'+safe(h.id)+'">'+safe(h.label||h.fields.empresaNome)+' — '+safe(h.date||'')+'</option>').join('');
  a.innerHTML='<option value="">Selecione A</option>'+opts;b.innerHTML='<option value="">Selecione B</option>'+opts;
  if(arr.some(h=>h.id===prevA))a.value=prevA;
  if(arr.some(h=>h.id===prevB))b.value=prevB;
@@ -300,6 +301,49 @@ $('saveAnalysis').addEventListener('click',()=>{
  const arr=[entry,...readHistory()].slice(0,12);
  if(writeHistory(arr)){$('saveAnalysisStatus').textContent='Análise salva apenas neste navegador. Compare na aba Histórico.';renderHistory()}
 });
+
+$('historySearch').addEventListener('input',renderHistory);
+$('exportHistory').addEventListener('click',()=>{
+ const records=readHistory();
+ if(!records.length){$('historyFeedback').textContent='Salve ao menos uma análise para exportar.';return}
+ const payload={format:'IMPULSO_AI_HISTORY',version:1,exportedAt:new Date().toISOString(),records};
+ const data=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+ const url=URL.createObjectURL(data),anchor=document.createElement('a');anchor.href=url;anchor.download='impulso-ai-historico.json';anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ $('historyFeedback').textContent='Histórico exportado em JSON. Evite compartilhar dados pessoais ou confidenciais.';
+});
+$('importHistory').addEventListener('click',()=>$('importHistoryFile').click());
+$('importHistoryFile').addEventListener('change',async()=>{
+ const file=$('importHistoryFile').files?.[0];$('importHistoryFile').value='';
+ if(!file)return;
+ if(file.size>1000000){$('historyFeedback').textContent='Arquivo excede 1 MB. Importe um histórico menor.';return}
+ try{
+  const parsed=JSON.parse(await file.text());
+  if(parsed?.format!=='IMPULSO_AI_HISTORY'||parsed.version!==1||!Array.isArray(parsed.records))throw Error('Formato inválido');
+  if(parsed.records.length>100)throw Error('Histórico muito grande');
+  const cleaned=parsed.records.map((entry,index)=>{
+   if(!entry||typeof entry!=='object'||!entry.fields||typeof entry.fields!=='object'||!entry.metrics||typeof entry.metrics!=='object')throw Error('Registro incompleto');
+   const fields={};
+   scenarioInputs.forEach(id=>{
+    const v=entry.fields[id];if(v===undefined||v===null)return;
+    if(typeof v!=='string'||v.length>1000)throw Error('Campo inválido');
+    if(formLimits[id]&&(v===''||!Number.isFinite(Number(v))||Number(v)<formLimits[id][0]||Number(v)>formLimits[id][1]))throw Error('Limites inválidos');
+    fields[id]=v;
+   });
+   if(!fields.empresaNome||!fields.proc||!fields.vol||!fields.pessoas)throw Error('Dados obrigatórios ausentes');
+   const metrics={};
+   ['score','hours','benefit','cost','roi'].forEach(k=>{
+    const v=entry.metrics[k];if(v!==null&&v!==undefined&&(!Number.isFinite(Number(v))||Math.abs(Number(v))>10000000000))throw Error('Indicadores inválidos');
+    metrics[k]=v===null||v===undefined?null:Number(v);
+   });
+   metrics.blocked=Boolean(entry.metrics.blocked);
+   return {id:'import-'+Date.now()+'-'+index+'-'+Math.random().toString(36).slice(2,6),date:typeof entry.date==='string'?entry.date.slice(0,60):'Importado',label:typeof entry.label==='string'?entry.label.slice(0,70):'',fields,metrics,selectedOpportunity:options.some(o=>o.name===entry.selectedOpportunity)?entry.selectedOpportunity:options[0].name};
+  });
+  const saved=[...cleaned,...readHistory()].slice(0,12);
+  if(!writeHistory(saved))throw Error('Armazenamento local indisponível');
+  renderHistory();$('historyFeedback').textContent=cleaned.length+' análise(s) importada(s) com sucesso. Todas devem ser reavaliadas antes de aprovação.';
+ }catch(e){$('historyFeedback').textContent='Não foi possível importar: '+(e.message||'arquivo incompatível')+'. O histórico existente foi mantido.'}
+});
+
 $('compareA').addEventListener('change',renderHistoryComparison);
 $('compareB').addEventListener('change',renderHistoryComparison);
 $('clearHistory').addEventListener('click',()=>{if(!readHistory().length)return;if(window.confirm('Apagar todas as análises salvas neste navegador?')){writeHistory([]);renderHistory()}});
